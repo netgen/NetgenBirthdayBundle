@@ -1,0 +1,85 @@
+{% set config_resolver = ezpublish.getConfigResolver() %}
+
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+
+    {% block head %}
+        {% include 'NetgenSimpleContentStorageBundle::page_head.html.twig' %}
+    {% endblock %}
+
+    {% block headStyle %}
+    {# {% include 'NetgenSimpleContentStorageBundle::page_head_style.html.twig' %} #}
+        {{ render_esi( controller( 'NetgenSimpleContentStorageBundle:Layout:style' ) ) }}
+    {% endblock %}
+
+    {% block headScript %}
+        {% include 'NetgenSimpleContentStorageBundle::page_head_script.html.twig' %}
+    {% endblock %}
+
+</head>
+<body>
+
+{# include 'NetgenSimpleContentStorageBundle:parts:ga_code.html.twig' #}
+
+    {% block header %}
+        {{ render_esi( controller( 'NetgenSimpleContentStorageBundle:Layout:header' ) ) }}
+    {% endblock %}
+
+    {# if pageData.showPath is defined and pageData.showPath %}
+        {% block path %}
+            {% include 'NetgenSimpleContentStorageBundle::page_toppath.html.twig' %}
+        {% endblock %}
+    {% endif #}
+
+    <div class="container">
+        <div class="row">
+
+        {% block menu %}
+            {{ render_esi( controller( 'NetgenSimpleContentStorageBundle:Layout:mainMenu' ) ) }}
+        {% endblock %}
+
+        <!-- start: Content -->
+            <div id="content" class="col-lg-10 col-sm-11">
+
+                <div class="row">
+
+                    {% if ezpublish.legacy.has( 'content_info' ) %}
+                        {% set persistent_variable = ezpublish.legacy.get( 'content_info' )['persistent_variable'] %}
+                    {% endif %}
+                    {% if module_result.content_info is defined %}
+                        {% set persistent_variable = module_result.content_info['persistent_variable'] %}
+                    {% endif %}
+
+                    <div class="{% if persistent_variable.action_items is defined %}col-lg-11 col-sm-10{% else %}col-lg-12 col-sm-12{% endif %}">
+                        {% block content %}{% endblock %}
+                    </div>
+
+                    {% if persistent_variable.action_items is defined %}
+                    <div class="col-lg-1 col-sm-2">
+                        <div class="affix-wrapper" data-spy="affix" role="complementary" data-offset-top="70">
+                            <ul class="actions-nav">
+                            {{ persistent_variable.action_items|raw }}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% block footer %}
+        {{ render_esi( controller( 'NetgenSimpleContentStorageBundle:Layout:footer' ) ) }}
+    {% endblock %}
+
+{% block footerScript %}
+    {% include 'NetgenSimpleContentStorageBundle::page_footer_script.html.twig' %}
+{% endblock %}
+
+</body>
+</html>

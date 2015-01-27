@@ -1,0 +1,151 @@
+{% extends pagelayout %}
+
+{% set user_can_edit = ezpublish_can_user( 'content', 'edit', content.contentInfo ) %}
+{% set user_has_access = ezpublish_can_user( 'access', 'non_public', content.contentInfo ) %}
+{% set cur_siteaccess = ezpublish.siteaccess %}
+
+{% block content %}
+    <div class="clearfix">
+        <div class="{% if user_can_edit and cur_siteaccess.name != 'eng' %}col-lg-11{% else %}col-lg-12{% endif %}">
+            <div class="box">
+                <div class="box-header">
+                    <h2><i class="fa fa-file-text"></i>{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Search" } %}: {{ ez_field_value( content, "name" ) }}</h2>
+                </div>
+                <div class="box-content">
+                    {% include form_template with { form: form, form_action: path( "ez_urlalias", { locationId: location.id } ), 'show_results': show_results} %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-1">
+            {% include "design:parts/modal_buttons.tpl" with {"node": location} %}
+        </div>
+
+        {#
+        <div class="col-lg-3">
+            <div class="box">
+                <div class="box-header">
+                    <h2><i class="fa fa-floppy-o"></i>Saved searches</h2>
+                </div>
+                <div class="box-content">
+                    <div class="right-info">
+                        <input type="hidden" id="nodename" value="{{ ez_field_value( content, "name" ) }}" />
+                        <label>Latest saved searches</label>
+                    </div>
+                </div>
+            </div>
+        </div>#}
+    </div>
+
+        <div class="{% if user_can_edit and cur_siteaccess.name != 'eng' %}col-lg-11{% else %}col-lg-12{% endif %}">
+            <div class="box">
+                <div class="box-header">
+                    <h2><i class="fa fa-file-text"></i>{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Search results" } %}</h2>
+                </div>
+                <div class="box-content">
+                    <p>{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Found" } %}: {{ pager.getNbResults() }}</p>
+                    {#<ul>
+                        {% for hit in pager %}
+                            <li><a href="{{ path( 'ez_urlalias', {'locationId': hit.valueObject.contentInfo.mainLocationId} ) }}">{{ ez_content_name( hit.valueObject ) }}</a></li>
+                        {% endfor %}
+                    </ul>#}
+
+                    {#/* @todo Izvuci iz configResolvera "locale" ( eg. eng-GB ) i proslijediti ga u getName('locale') za object stateove*/#}
+                {% if not pager.getNbResults()  %}
+                    <p>{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Sorry, no results were found." } %}</p>
+                {% else %}
+                    <table class="clickable table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="priority_1">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Select" } %}</th>
+                            <th class="priority_2">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Dossier title" } %}</th>
+                            <th class="priority_3">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Legal Act Type" } %}</th>
+                            <th class="priority_4">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Dossier number" } %}</th>
+                            <th class="priority_5">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Status" } %}</th>
+                            <th class="priority_6">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Legal Act number" } %}</th>
+                            <th class="priority_7">{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Modification date" } %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for hit in pager %}
+                            <tr>
+                            <td class="priority_1"><a href="#" style="display:none"></a><input type="checkbox" name="selected[{{ hit.valueObject.id }}]"></td>
+                            <td class="priority_2"><a href="{{ path( 'ez_urlalias', {'locationId': hit.valueObject.contentInfo.mainLocationId} ) }}">{{ ez_field_value( hit.valueObject, "name" ) }}</a></td>
+                            <td class="priority_3">{{ ez_field_value( hit.valueObject, "ld_type" ) }}</td>
+                            <td class="priority_4">{{ ez_field_value( hit.valueObject, "id" ) }}</td>
+                            {# statusi idu preko dummy translationa dok ne napravio prijevod object statesa u sučelju #}
+                            <td class="priority_5">{% include "design:dummy_twig_translation.tpl" with {"context": "rgm/ld_search_form", "translation_string": hit.objectStates.rgm_status.getName('eng-GB') } %}</td>
+
+                            <td class="priority_6">{{ ez_field_value( hit.valueObject, "number" ) }}</td>
+                            <td class="priority_7">{{ hit.valueObject.versionInfo.modificationDate.date|date( 'd/m/Y' ) }}</td>
+                            </tr>{{ ezpublish.legacy.get('content_info')  }}
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if user_has_access %}
+                    <div>
+                        <input class="btn btn-primary clear" type="submit" id="ExportSearch" name="ExportSearch" value="{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Export" } %}" />
+
+                        {#<input class="btn btn-primary clear" type="submit" id="Delete" name="Delete" value="{{ 'Delete'|trans }}" />#}
+                        <div class="status-message" id="status-message"></div>
+
+                    </div>
+                    {% endif %}
+                    {% if pager.haveToPaginate() %}
+                        {% if query_string['ld_search'] is null %}
+                            {% set query_string = query_string|merge({'ld_search' : { 'class_id' : 'dossier_ld', 'search_type': 'all' } }) %}
+                        {% endif %}
+                        {{ pagerfanta( pager, 'twitter_bootstrap3_translated', {
+                        'routeName': 'ez_urlalias',
+                        'routeParams': query_string|merge({'locationId': content.contentInfo.mainLocationId})
+                        } )
+                        }}
+                    {% endif %}
+                    {% if user_has_access %}
+                    <script type="application/javascript">
+                        // change form action url
+                        $(function(){
+                            $("#ExportSearch").on('click', function(e){
+                                e.preventDefault();
+                                var $form = $('#filter-form'),
+                                        actionUrl = $form.attr('action');
+                                $form.prop('action', '/export/excelstream/64').submit();
+                                $form.prop('action', actionUrl );
+                            });
+                        });
+
+                        $(function(){
+                            $("#Delete").on('click', function(e){
+                                e.preventDefault();
+
+                                // check for checked boxes
+
+                                $("#status-message").text('{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Deleting selected items." } %}');
+
+                                $.ajax({
+                                    url: '{{path('send_to_delete_queue')}}',
+                                    type: 'post',
+                                    data: {
+                                        data: 'mehmeh'
+                                    },
+                                    dataType: 'json',
+                                    success: function(data){
+
+                                        if( data.status === 1 )
+                                            $("#status-message").text('{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"Success!" } %}');
+                                        else
+                                            $("#status-message").text('{% include "design:dummy_twig_translation.tpl" with {"context": "scs/search", "translation_string":"There was a problem..." } %}');
+                                    }
+                                });
+
+                            });
+                        });
+
+                    </scrpt>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}

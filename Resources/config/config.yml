@@ -1,0 +1,16 @@
+parameters:
+    netgen_simplecontentstorage.default.site_settings.create_new_content_type_group: "Create New List"
+    netgen_simplecontentstorage.default.site_settings.anonymous_username: anonymous
+    netgen_simplecontentstorage.default.site_settings.allowed_user_groups:
+        - Administrator users
+        - Editors
+        - Translators
+        - Advanced editors
+#Search_filter mapping
+    netgen_search_and_filter.form_type.field.objectstategroup.availability.id: 4
+    netgen_search_and_filter.form_type.field.objectstategroup.status.id: 3
+    netgen_search_and_filter.form_type.field.eztag.affects.id: 9
+    netgen_search_and_filter.form_type.field.eztag.subarea.id: 12
+    netgen_search_and_filter.form_type.field.eztag.priority.id: 15
+    netgen_search_and_filter.form_type.field.eztag.ld_type.id: 13
+    netgen_search_and_filter.form_type.field.locationlist.regulator.location_id: 63

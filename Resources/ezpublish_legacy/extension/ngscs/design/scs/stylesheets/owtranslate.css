@@ -1,0 +1,49 @@
+.clearfloat {
+    line-height: 0px;
+    height: 0px;
+    clear: both;
+}
+.translation_edit {
+    width: 200px !important;
+}
+.empty_edit, .click-to-open {
+    color: #0B4E7A;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.edit {
+    cursor: pointer;
+}
+
+.close {
+    display: none;
+}
+.open {
+    display: table-cell;
+}
+/*
+ * search form
+ */
+.search-form {
+    width: 100%;
+    margin: 7px 0;
+}
+.fields {
+    display: inline-block;
+    margin-right: 10px;
+}
+a.defaultbutton {
+    background: -moz-linear-gradient(center top , #E99A21, #C97D10) repeat scroll 0 0 #D68916;
+    border: 1px solid #AAAAAA;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    overflow: visible;
+    padding: 0 0.5em;
+    width: auto;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.26em 0.7em;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration:none;
+}

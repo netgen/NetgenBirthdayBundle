@@ -1,0 +1,52 @@
+{
+    "require": {
+        "ezflow": "5.2.x-dev",
+        "ngopengraph": "1.3.x-dev",
+        "nglanguageswitcher": "1.0.x-dev",
+        "ngconnect": "1.3.x-dev",
+        "birthday": "1.1.x-dev",
+        "childrenindexer": "1.0.x-dev",
+        "parentindexer": "1.0.x-dev",
+        "hideuntildate": "1.0.x-dev",
+        "ezclasslists": "1.2.x-dev",
+        "ezchangeclass": "1.0.x-dev",
+        "enhancedselection2": "1.0.x-dev",
+        "eztags": "2.0.x-dev",
+        "xrowmetadata": "2.1.x-dev",
+        "ngbookmark": "1.0.x-dev",
+        "ngcomments": "1.1.x-dev"
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ezflow.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ngopengraph.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/nglanguageswitcher.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ngconnect.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/birthday.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/childrenindexer.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/parentindexer.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/hideuntildate.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ezclasslists.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ezchangeclass.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/enhancedselection2.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/eztags.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/xrowmetadata.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ngbookmark.git" },
+        { "type": "vcs", "url": "https://bitbucket.org/netgen/ngcomments.git" }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "vendor-dir": ".."
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "rm -rf ../composer/",
+            "rm ../autoload.php",
+            "cd ../../ && php bin/php/ezpgenerateautoloads.php -e && cd -"
+        ],
+        "post-update-cmd": [
+            "rm -rf ../composer/",
+            "rm ../autoload.php",
+            "cd ../../ && php bin/php/ezpgenerateautoloads.php -e && cd -"
+        ]
+    }
+}

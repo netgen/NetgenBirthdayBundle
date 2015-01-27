@@ -1,0 +1,59 @@
+<!-- start: Main Menu -->
+<div id="sidebar-left" class="col-lg-2 col-sm-1">
+
+    {#
+    <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+        <i class="fa fa-plus-circle"></i>
+        <span> Create new</span>
+    </a>
+
+    <ul class="dropdown-menu notifications">
+        <li class="dropdown-menu-title">
+            <span>Select content type</span>
+        </li>
+        <li>
+            <a onclick="ezpopmenu_submitForm( 'create-dossier_ap' ); return false;" href="#">
+                <span class="message">Business Process</span>
+                <span class="time"></span>
+            </a>
+            <form action="/content/action" method="post" id="create-dossier_ap" style="display: none">
+                <!--<input type="hidden" value="63" name="NodeID">-->
+                <input type="hidden" name="ClassID" value="40">
+                <input type="hidden" name="NewButton" value="">
+                <input type="hidden" name="ContentLanguageCode" value="eng-GB">
+            </form>
+        </li>
+        <li>
+            <a onclick="ezpopmenu_submitForm( 'create-dossier_ld' ); return false;" href="#">
+                <span class="message">Legal Act</span>
+                <span class="time"></span>
+            </a>
+            <form action="/content/action" method="post" id="create-dossier_ld" style="display: none">
+                <!--<input type="hidden" value="63" name="NodeID">-->
+                <input type="hidden" name="ClassID" value="41">
+                <input type="hidden" name="NewButton" value="">
+                <input type="hidden" name="ContentLanguageCode" value="eng-GB">
+            </form>
+        </li>
+    </ul>
+       #}
+    <div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
+        <ul class="nav nav-tabs nav-stacked main-menu">
+            {% for main_menu_item in main_menu_items %}
+                <li>
+                    <a
+                        href="{% if main_menu_item.fields.location is defined %}
+                                    {{ ez_field_value(main_menu_item, 'location').link }}
+                              {% else %}
+                                    {{ path( 'ez_urlalias', { 'locationId': main_menu_item.contentInfo.mainLocationId } ) }}
+                              {% endif %}">
+                        <i class="fa {% if main_menu_item.fields.icon is defined %}{{ ez_field_value( main_menu_item, 'icon') }}{% endif %}"></i>
+                        <span class="hidden-sm"> {{ ez_content_name( main_menu_item.contentInfo) }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+<!-- end: Main Menu -->

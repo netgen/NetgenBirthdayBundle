@@ -1,0 +1,53 @@
+/* OBJECTRELATIONBROWSE */
+
+.orb-panel-container {}
+.orb-panel {margin:10px 0 0;}
+.orb-panel-top {margin:0;}
+.orb-panel-bottom {position:relative; margin:0; height:23px;}
+
+table.orb-list-has-items {margin-bottom:10px;}
+
+.tablebox table.orb-list td {border:none; padding:2px; border-bottom: 1px solid #e5e5e5 !important;}
+/*.tablebox table.orb-list .even td {background:#E5E2D4 !important;}*/
+
+.tablebox-input table.orb-list {border-top:2px solid grey; border-bottom:2px solid grey; width:100%;}
+
+table.orb-list label {white-space:normal; font-weight:normal;}
+
+.orb-paginator a.current {font-weight:bold;}
+
+.orb-search-popup, .generatecopy-menu {display:none; width:600px; z-index:999; position:absolute; right:0px; top:0;}
+.orb-search-popup-wide {width:765px; top:-1px;}
+.orb-search-popup-shadow, .generatecopy-menu-shadow {background:url(../images/orb-popup-shadow.png); position:relative; right:-5px; bottom:-5px;}
+.orb-search-popup-content, .generatecopy-menu-content {background-color:#eee; padding:10px; z-index:999; border:2px solid silver; position:relative; left:-5px; top:-5px;}
+
+.orb-search-popup .orb-panel-top {margin-bottom:10px;}
+
+div.orb-search-popup input.button,
+div.orb-panel input.button {margin-top:0; margin-bottom:0;}
+
+.orb-paginator {margin:10px 0;}
+.orb-paginator span {margin:0 4px 0 2px;}
+
+.orb-paginator a {border: 1px solid #AAAAAA; margin-right: 2px; padding: 1px 6px; color: #005bae; color: #005bae; text-decoration: none;
+    color: #005bae;
+    font-family: Tahoma,Geneva,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    background:white;}
+.orb-paginator a:hover {background:#555555; border-color:#555555; color:white;}
+.orb-paginator a.current,
+.orb-paginator a.current:hover {background:#005bae; border-color:#005bae; color:white; cursor:default;}
+
+.orb-paginator a.disabled,
+.orb-paginator a.disabled:hover {background:white; border-color:#d0d0d0; color:#888888; cursor:default;}
+
+.orb-panel-controls {margin:0;}
+
+#allcontent table.selectcomponent-matrix td {padding:5px;}
+table.selectcomponent-matrix td.selectcomponent {width:500px;}
+
+td.no-bottom, .tablebox table.orb-list td.no-bottom {border-bottom:none !important;}
+table.orb-list { margin-bottom: 10px; }
+
+/* /OBJECTRELATIONBROWSE */

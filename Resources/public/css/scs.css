@@ -1,0 +1,91 @@
+/* Overriden from Bootstrap
+======================================*/
+/* General tables */
+table { font-size: inherit; }
+
+/* General rules
+======================================*/
+/* margin top and bottom */
+.margin20-tb {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Comment list */
+form[name="commentlist"] .controls input[type="submit"] { margin: 10px 0; }
+#ezcom-comment-list { margin: 30px 0; padding: 0 40px; }
+#ezcom-comment-list .discussions ul li .message { border-bottom: none; }
+#ezcom-comment-list .discussions ul li { -moz-box-shadow: 0 0 0 1px #E4E6EB; -webkit-box-shadow: 0 0 0 1px #E4E6EB; box-shadow: 0 0 0 1px #E4E6EB; }
+#ezcom-comment-list .discussions ul li input[name="DeleteCommentButton"] { margin-right: 5px; }
+
+/* Language switcher
+======================================*/
+.navbar-nav .lang-select-wrapper a { color: #fff; padding: 10px 10px 10px 30px; }
+.lang-select-wrapper .dropdown-menu li a { padding-left: 30px !important; color: #000; }
+.lang-select-wrapper .dropdown-menu li:hover { background: #f5f5f5; }
+
+/* LD Search
+======================================*/
+.pagination a.active,
+.pagination a.active:hover { background-color: #428BCA; border-color: #428BCA; color: #FFFFFF; cursor: default; z-index: 2; }
+#yui-dt0-paginator0,
+#yui-dt0-paginator1 { display: block; overflow: hidden; }
+#yui-dt0-paginator0 .paginator-report,
+#yui-dt0-paginator1 .paginator-report { float: right; margin-top: 28px; }
+#yui-dt0-paginator0 .pagination,
+#yui-dt0-paginator1 .pagination { float: left; }
+
+/* Find objects
+======================================*/
+.ezobject-relation-search-browse { margin-top: 10px; }
+.ezobject-relation-search-browse a { padding-bottom: 5px; margin-bottom: 5px; border-bottom: 1px solid #f7f7f7; display: block; }
+.ezobject-relation-search-browse a:hover { cursor: pointer; }
+.ezobject-relation-search-text { margin: 10px 0; }
+
+/* Clickable tables
+======================================*/
+table.clickable th a { color: #428BCA; }
+
+/* Navigation right
+======================================*/
+.navbar .navbar-nav.pull-right .dropdown .dropdown-toggle { border-right: none; }
+.navbar .navbar-nav.pull-right .dropdown .dropdown-toggle i { position: absolute; right: 15px; top: 12px; }
+
+a.navbar-brand {padding:0!important; height:100%; border:none;}
+a.navbar-brand img {display:block; width:100%; height:100%;}
+
+/* Forum
+======================================*/
+a.forum-up { padding: 0 10px; color: #fff; }
+
+/* Bookmark search
+======================================*/
+#bookmarksearch { display: none; }
+
+/* Form register
+======================================*/
+#register input[type="file"] { width: 100%; }
+
+/* Attachments
+======================================*/
+#attachments .file-item .file-item-inner { background: #f5f5f5; padding: 10px; margin-bottom: 15px; position: relative; border: 1px solid #ddd; }
+#attachments .file-item img { margin-right: 10px; }
+
+/* Comments
+======================================*/
+/*.action-message { background: #DFF0D8; border: 1px solid #D6E9C6; color: #3C763D; border-radius: 4px; margin-bottom: 20px; padding: 15px; } */
+
+/* Process
+======================================*/
+#process table.ezmatrix-process tr td { background: #F2DEDE; }
+#process table.ezmatrix-process tr.highlight td { background: #DFF0D8; }
+
+@media only screen and (max-width: 1200px) {
+    .dossier-search .col-lg-4 .form-control { margin-bottom: 10px; }
+}
+
+@media only screen and (max-width: 479px) {
+    #ezcom-comment-list { padding: 0; }
+}
+
+

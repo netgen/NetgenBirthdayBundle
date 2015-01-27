@@ -1,0 +1,13 @@
+parameters:
+    ezpublish.fieldType.ezbirthday.converter.class: Netgen\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\BirthdayConverter
+    ezpublish.fieldType.childrenindexer.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Null
+
+services:
+    ezpublish.fieldType.ezbirthday.converter:
+        class: %ezpublish.fieldType.ezbirthday.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezbirthday, lazy: true, callback: '::create'}
+    ezpublish.fieldType.childrenindexer.converter:
+        class: %ezpublish.fieldType.childrenindexer.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: childrenindexer, lazy: true, callback: '::create'}

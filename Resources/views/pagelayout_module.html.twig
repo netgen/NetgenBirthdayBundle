@@ -1,0 +1,10 @@
+{% extends 'NetgenSimpleContentStorageBundle::pagelayout.html.twig' %}
+
+{% block content %}
+    {% if  module_result.errorCode is defined %}
+        <h1>{{ module_result.errorMessage }} ({{ module_result.errorCode }})</h1>
+        {{ module_result.content|raw }}
+    {% else %}
+        {{ module_result.content|raw }}
+    {% endif %}
+{% endblock %}

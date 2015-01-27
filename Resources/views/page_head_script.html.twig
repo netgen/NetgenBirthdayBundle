@@ -1,0 +1,33 @@
+{% set persistent_variable = false %}
+{% if ezpublish.legacy.has( 'content_info' ) %}
+    {% set persistent_variable = ezpublish.legacy.get( 'content_info' )['persistent_variable'] %}
+{% endif %}
+
+{% include "design:page_scripts.tpl" with {"persistent_variable": persistent_variable}  %}
+
+<!-- start: JavaScript-->
+<!--[if !IE]>-->
+
+{#<script src="{{ asset( "bundles/netgensimplecontentstorage/sq/js/jquery-2.0.3.min.js" ) }}"></script>#}
+
+<!--<![endif]-->
+
+<script type="text/javascript">
+window.jQuery || document.write("<script src='{{ asset( "bundles/netgensimplecontentstorage/sq/js/jquery-2.0.3.min.js" ) }}'>"+"<"+"/script>");
+</script>
+
+<!--[if IE]>
+
+<script src="{{ asset( "bundles/netgensimplecontentstorage/sq/js/jquery-1.10.2.min.js" ) }}"></script>
+
+<![endif]-->
+
+
+<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script src="{{ asset( "bundles/netgensimplecontentstorage/sq/js/respond.min.js" ) }}"></script>
+<script src="{{ asset( "bundles/netgensimplecontentstorage/sq/css/ie6-8.css" ) }}"></script>
+
+<![endif]-->
