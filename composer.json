@@ -1,0 +1,5 @@
+{
+  "require": {
+    "netgen/ez-forms-bundle": "dev-master"
+  }
+}
