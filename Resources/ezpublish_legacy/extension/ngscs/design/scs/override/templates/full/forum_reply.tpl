@@ -1,1 +1,0 @@
-{* Potrebno da bude prazan zbog ajax responsa *}

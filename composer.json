@@ -1,5 +1,18 @@
 {
-  "require": {
-    "netgen/ez-forms-bundle": "dev-master"
-  }
+  "name": "netgen/birthday-bundle",
+  "description": "Netgen Birthday bundle for eZ Publish",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Netgen",
+      "homepage": "http://www.netgenlabs.com"
+    }
+  ],
+  "suggest": {
+    "netgen/ez-forms-bundle": "Contains field type handlers for eZ Publish"
+  },
+  "autoload": {
+    "psr-0": { "Netgen\\BirthdayBundle": "" }
+  },
+  "target-dir": "Netgen/BirthdayBundle/"
 }
