@@ -1,6 +1,6 @@
 {
   "name": "netgen/birthday-bundle",
-  "description": "Netgen Birthday bundle for eZ Publish",
+  "description": "Netgen Birthday bundle for dates before 1970 in eZ Publish 5",
   "license": "GPL-2.0",
   "authors": [
     {
@@ -9,7 +9,7 @@
     }
   ],
   "suggest": {
-    "netgen/ez-forms-bundle": "Contains field type handlers for eZ Publish"
+    "netgen/ez-forms-bundle": "Contains field type handlers for integration of Symfony's Form component with eZ Publish 5 Public API"
   },
   "autoload": {
     "psr-0": { "Netgen\\BirthdayBundle": "" }
