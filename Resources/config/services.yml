@@ -1,3 +1,6 @@
+imports:
+    - {resource: form_fieldtype_handlers.yml}
+
 services:
 #    netgen_birthday.example:
 #        class: Netgen\BirthdayBundle\Example
