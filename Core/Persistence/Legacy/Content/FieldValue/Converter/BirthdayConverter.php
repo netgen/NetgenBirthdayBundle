@@ -1,5 +1,5 @@
 <?php
-namespace Netgen\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter;
+namespace Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter;
 
 use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
@@ -7,12 +7,10 @@ use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 
-use Netgen\Bundle\MetadataBundle\Core\FieldType\Metadata\Value;
-
-class BirthdayConverter implements Converter
+class Birthday implements Converter
 {
     /**
-     * @return BirthdayConverter
+     * @return Birthday
      */
     public static function create()
     {

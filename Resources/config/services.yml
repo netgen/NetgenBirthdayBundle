@@ -1,7 +1,15 @@
-imports:
-    - {resource: form_fieldtype_handlers.yml}
+parameters:
+    ezpublish.fieldType.ezbirthday.class: Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type
+    ezpublish.fieldType.ezbirthday.converter.class: Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday
 
 services:
-#    netgen_birthday.example:
-#        class: Netgen\BirthdayBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ezpublish.fieldType.ezbirthday:
+        class: %ezpublish.fieldType.ezbirthday.class%
+        parent: ezpublish.fieldType
+        tags:
+            - {name: ezpublish.fieldType, alias: ezbirthday}
+
+    ezpublish.fieldType.ezbirthday.converter:
+        class: %ezpublish.fieldType.ezbirthday.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezbirthday, lazy: true, callback: '::create'}

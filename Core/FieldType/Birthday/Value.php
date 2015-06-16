@@ -1,6 +1,6 @@
 <?php
 
-namespace Netgen\BirthdayBundle\Core\FieldType\Birthday;
+namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 
@@ -16,7 +16,7 @@ class Value extends BaseValue
     // date string
     public $date;
 
-    public function __construct( $date = null  )
+    public function __construct( $date = null )
     {
         if ( $date !== null && $date != '' )
         {
@@ -31,8 +31,11 @@ class Value extends BaseValue
 
     public function __toString()
     {
-        if ( $this->date !== null )
-            return (string) $this->day . '-' . $this->month . '-' . $this->year;
-        return '';
+        if ( $this->date === null )
+        {
+            return '';
+        }
+
+        return (string)$this->day . '-' . $this->month . '-' . $this->year;
     }
 }

@@ -1,18 +1,15 @@
 {
-  "name": "netgen/birthday-bundle",
-  "description": "Netgen Birthday bundle for dates before 1970 in eZ Publish 5",
-  "license": "GPL-2.0",
-  "authors": [
-    {
-      "name": "Netgen",
-      "homepage": "http://www.netgenlabs.com"
-    }
-  ],
-  "suggest": {
-    "netgen/ez-forms-bundle": "Contains field type handlers for integration of Symfony's Form component with eZ Publish 5 Public API"
-  },
-  "autoload": {
-    "psr-0": { "Netgen\\BirthdayBundle": "" }
-  },
-  "target-dir": "Netgen/BirthdayBundle/"
+    "name": "netgen/birthday-bundle",
+    "description": "Netgen Birthday bundle for dates before 1970 in eZ Publish 5",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Netgen",
+            "homepage": "http://www.netgenlabs.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Netgen\\Bundle\\BirthdayBundle": "" }
+    },
+    "target-dir": "Netgen/Bundle/BirthdayBundle/"
 }

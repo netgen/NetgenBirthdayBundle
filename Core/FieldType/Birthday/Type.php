@@ -1,6 +1,6 @@
 <?php
 
-namespace Netgen\BirthdayBundle\Core\FieldType\Birthday;
+namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 
@@ -23,7 +23,7 @@ class Type extends FieldType
 
     public function getName( SPIValue $value )
     {
-        return (string) $value;
+        return (string)$value;
     }
 
     public function fromHash( $hash )
@@ -84,7 +84,5 @@ class Type extends FieldType
                 $value->date
             );
         }
-
-
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Netgen\BirthdayBundle;
+namespace Netgen\Bundle\BirthdayBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
