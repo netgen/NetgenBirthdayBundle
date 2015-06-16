@@ -1,6 +1,7 @@
 parameters:
     ezpublish.fieldType.ezbirthday.class: Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type
     ezpublish.fieldType.ezbirthday.converter.class: Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday
+    ezpublish.fieldType.indexable.ezbirthday.class: eZ\Publish\Core\FieldType\Unindexed
 
 services:
     ezpublish.fieldType.ezbirthday:
@@ -13,3 +14,8 @@ services:
         class: %ezpublish.fieldType.ezbirthday.converter.class%
         tags:
             - {name: ezpublish.storageEngine.legacy.converter, alias: ezbirthday, lazy: true, callback: '::create'}
+
+    ezpublish.fieldType.indexable.ezbirthday:
+        class: %ezpublish.fieldType.indexable.ezbirthday.class%
+        tags:
+            - {name: ezpublish.fieldType.indexable, alias: ezbirthday}
