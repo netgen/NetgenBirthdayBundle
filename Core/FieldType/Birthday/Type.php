@@ -8,6 +8,7 @@ use eZ\Publish\Core\FieldType\FieldType;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
 use eZ\Publish\Core\FieldType\ValidationError;
+use DateTime;
 
 class Type extends FieldType
 {
@@ -99,7 +100,7 @@ class Type extends FieldType
      */
     public function toHash( SPIValue $value )
     {
-        return $value->date;
+        return (string)$value;
     }
 
     /**
@@ -114,7 +115,7 @@ class Type extends FieldType
      */
     protected function createValueFromInput( $inputValue )
     {
-        if ( !empty( $inputValue ) )
+        if ( $inputValue instanceof DateTime || is_string( $inputValue ) )
         {
             return new Value( $inputValue );
         }
@@ -137,11 +138,11 @@ class Type extends FieldType
      */
     protected function checkValueStructure( BaseValue $value )
     {
-        if ( !is_string( $value->date ) )
+        if ( !$value->date instanceof DateTime )
         {
             throw new InvalidArgumentType(
                 '$value->date',
-                'string',
+                'DateTime',
                 $value->date
             );
         }

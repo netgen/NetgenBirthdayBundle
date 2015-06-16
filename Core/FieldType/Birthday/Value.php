@@ -3,44 +3,39 @@
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use eZ\Publish\Core\FieldType\Value as BaseValue;
+use DateTime;
 
 class Value extends BaseValue
 {
     /**
-     * @var string
+     * @var \DateTime
      */
-    public $year;
+    public $date = null;
 
     /**
-     * @var string
-     */
-    public $month;
-
-    /**
-     * @var string
-     */
-    public $day;
-
-    /**
-     * @var string
-     */
-    public $date;
-
-    /**
-     * Constructor
+     * Date format to be used by {@link __toString()}
      *
-     * @param string $date
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d';
+
+    /**
+     * Construct a new Value object and initialize with $dateTime
+     *
+     * @param \DateTime|string|null $date Date as a DateTime object or string in Y-m-d format
      */
     public function __construct( $date = null )
     {
-        if ( !empty( $date ) )
+        if ( $date instanceof DateTime )
         {
-            $this->date = $date;
+            $date = clone $date;
+            $date->setTime( 0, 0, 0 );
 
-            $dateArray = explode( '-', $date );
-            $this->year = $dateArray[0];
-            $this->month = $dateArray[1];
-            $this->day = $dateArray[2];
+            $this->date = $date;
+        }
+        else if ( is_string( $date ) )
+        {
+            $this->date = new DateTime( $date );
         }
     }
 
@@ -51,11 +46,11 @@ class Value extends BaseValue
      */
     public function __toString()
     {
-        if ( empty( $this->date ) )
+        if ( !$this->date instanceof DateTime )
         {
-            return '';
+            return "";
         }
 
-        return sprintf( "%04d", $this->year ) . '-' . sprintf( "%02d", $this->month ) . '-' . sprintf( "%02d", $this->day );
+        return $this->date->format( $this->dateFormat );
     }
 }
