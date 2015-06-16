@@ -99,11 +99,6 @@ class Type extends FieldType
      */
     public function toHash( SPIValue $value )
     {
-        if ( $this->isEmptyValue( $value ) )
-        {
-            return null;
-        }
-
         return $value->date;
     }
 
@@ -124,7 +119,7 @@ class Type extends FieldType
             return new Value( $inputValue );
         }
 
-        return parent::createValueFromInput( $inputValue );
+        return $inputValue;
     }
 
     /**

@@ -6,15 +6,31 @@ use eZ\Publish\Core\FieldType\Value as BaseValue;
 
 class Value extends BaseValue
 {
+    /**
+     * @var string
+     */
     public $year;
 
+    /**
+     * @var string
+     */
     public $month;
 
+    /**
+     * @var string
+     */
     public $day;
 
-    // date string
+    /**
+     * @var string
+     */
     public $date;
 
+    /**
+     * Constructor
+     *
+     * @param string $date
+     */
     public function __construct( $date = null )
     {
         if ( !empty( $date ) )
@@ -28,13 +44,18 @@ class Value extends BaseValue
         }
     }
 
+    /**
+     * Returns a string representation of the field value.
+     *
+     * @return string
+     */
     public function __toString()
     {
-        if ( $this->date === null )
+        if ( empty( $this->date ) )
         {
             return '';
         }
 
-        return (string)$this->day . '-' . $this->month . '-' . $this->year;
+        return sprintf( "%04d", $this->year ) . '-' . sprintf( "%02d", $this->month ) . '-' . sprintf( "%02d", $this->day );
     }
 }
