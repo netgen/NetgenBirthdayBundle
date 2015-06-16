@@ -8,6 +8,9 @@
             "homepage": "http://www.netgenlabs.com"
         }
     ],
+    "suggest": {
+        "netgen/birthday": "Support for ezbirthday datatype in legacy administration"
+    },
     "autoload": {
         "psr-0": { "Netgen\\Bundle\\BirthdayBundle": "" }
     },
