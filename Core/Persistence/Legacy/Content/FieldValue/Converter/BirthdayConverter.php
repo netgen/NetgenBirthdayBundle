@@ -1,6 +1,7 @@
 <?php
 namespace Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter;
 
+use eZ\Publish\Core\FieldType\FieldSettings;
 use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
@@ -49,6 +50,7 @@ class Birthday implements Converter
      */
     public function toStorageFieldDefinition( FieldDefinition $fieldDef, StorageFieldDefinition $storageDef )
     {
+        $storageDef->dataText1 = $fieldDef->fieldTypeConstraints->fieldSettings['defaultValue'];
     }
 
     /**
@@ -59,6 +61,11 @@ class Birthday implements Converter
      */
     public function toFieldDefinition( StorageFieldDefinition $storageDef, FieldDefinition $fieldDef )
     {
+        $fieldDef->fieldTypeConstraints->fieldSettings = new FieldSettings(
+            array(
+                'defaultValue' => (int)$storageDef->dataText1
+            )
+        );
     }
 
     /**

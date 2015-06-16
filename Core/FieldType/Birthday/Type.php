@@ -7,10 +7,34 @@ use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 use eZ\Publish\Core\FieldType\FieldType;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
-use eZ\Publish\SPI\Persistence\Content\FieldValue;
+use eZ\Publish\Core\FieldType\ValidationError;
 
 class Type extends FieldType
 {
+    /**
+     * @const int
+     */
+    const DEFAULT_VALUE_EMPTY = 0;
+
+    /**
+     * @const int
+     */
+    const DEFAULT_VALUE_CURRENT_DATE = 1;
+
+    /**
+     * List of settings available for this FieldType
+     *
+     * The key is the setting name, and the value is the default value for this setting
+     *
+     * @var array
+     */
+    protected $settingsSchema = array(
+        "defaultValue" => array(
+            "type" => "integer",
+            "default" => self::DEFAULT_VALUE_EMPTY
+        )
+    );
+
     /**
      * Returns the field type identifier for this field type
      *
@@ -19,16 +43,6 @@ class Type extends FieldType
     public function getFieldTypeIdentifier()
     {
         return "ezbirthday";
-    }
-
-    /**
-     * Returns the empty value for this field type.
-     *
-     * @return \eZ\Publish\SPI\FieldType\Value
-     */
-    public function getEmptyValue()
-    {
-        return new Value();
     }
 
     /**
@@ -47,6 +61,16 @@ class Type extends FieldType
     public function getName( SPIValue $value )
     {
         return (string)$value;
+    }
+
+    /**
+     * Returns the empty value for this field type.
+     *
+     * @return \eZ\Publish\SPI\FieldType\Value
+     */
+    public function getEmptyValue()
+    {
+        return new Value();
     }
 
     /**
@@ -81,59 +105,6 @@ class Type extends FieldType
         }
 
         return $value->date;
-    }
-
-    /**
-     * Converts a $value to a persistence value.
-     *
-     * @param \eZ\Publish\SPI\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value The value of the field type
-     *
-     * @return \eZ\Publish\SPI\Persistence\Content\FieldValue the value processed by the storage engine
-     */
-    public function toPersistenceValue( SPIValue $value )
-    {
-        return new FieldValue(
-            array(
-                "data" => $value,
-                "externalData" => null,
-                "sortKey" => $this->getSortInfo( $value ),
-            )
-        );
-    }
-
-    /**
-     * Converts a persistence $value to a Value
-     *
-     * This method builds a field type value from the $data and $externalData properties.
-     *
-     * @param \eZ\Publish\SPI\Persistence\Content\FieldValue $fieldValue
-     *
-     * @return \eZ\Publish\SPI\FieldType\Value
-     */
-    public function fromPersistenceValue( FieldValue $fieldValue )
-    {
-        return new Value( $fieldValue->data );
-    }
-
-    /**
-     * Returns information for FieldValue->$sortKey relevant to the field type.
-     *
-     * Return value is mixed. It should be something which is sensible for
-     * sorting.
-     *
-     * It is up to the persistence implementation to handle those values.
-     * Common string and integer values are safe.
-     *
-     * For the legacy storage it is up to the field converters to set this
-     * value in either sort_key_string or sort_key_int.
-     *
-     * @param \eZ\Publish\Core\FieldType\Value $value
-     *
-     * @return mixed
-     */
-    protected function getSortInfo( BaseValue $value )
-    {
-        return $this->getName( $value );
     }
 
     /**
@@ -179,5 +150,100 @@ class Type extends FieldType
                 $value->date
             );
         }
+    }
+
+    /**
+     * Returns information for FieldValue->$sortKey relevant to the field type.
+     *
+     * Return value is mixed. It should be something which is sensible for
+     * sorting.
+     *
+     * It is up to the persistence implementation to handle those values.
+     * Common string and integer values are safe.
+     *
+     * For the legacy storage it is up to the field converters to set this
+     * value in either sort_key_string or sort_key_int.
+     *
+     * @param \eZ\Publish\Core\FieldType\Value $value
+     *
+     * @return mixed
+     */
+    protected function getSortInfo( BaseValue $value )
+    {
+        return $this->getName( $value );
+    }
+
+    /**
+     * Validates the fieldSettings of a FieldDefinitionCreateStruct or FieldDefinitionUpdateStruct
+     *
+     * @param mixed $fieldSettings
+     *
+     * @return \eZ\Publish\SPI\FieldType\ValidationError[]
+     */
+    public function validateFieldSettings( $fieldSettings )
+    {
+        $validationErrors = array();
+        if ( !is_array( $fieldSettings ) )
+        {
+            $validationErrors[] = new ValidationError( "Field settings must be in form of an array" );
+            return $validationErrors;
+        }
+
+        foreach ( $fieldSettings as $name => $value )
+        {
+            if ( !isset( $this->settingsSchema[$name] ) )
+            {
+                $validationErrors[] = new ValidationError(
+                    "Setting '%setting%' is unknown",
+                    null,
+                    array(
+                        "setting" => $name
+                    )
+                );
+                continue;
+            }
+
+            switch ( $name )
+            {
+                case "defaultValue":
+                    if ( !is_integer( $value ) )
+                    {
+                        $validationErrors[] = new ValidationError(
+                            "Setting '%setting%' value must be of integer type",
+                            null,
+                            array(
+                                "setting" => $name
+                            )
+                        );
+                    }
+                    else
+                    {
+                        if ( $value !== self::DEFAULT_VALUE_EMPTY && $value !== self::DEFAULT_VALUE_CURRENT_DATE )
+                        {
+                            $validationErrors[] = new ValidationError(
+                                "Setting '%setting%' value must be either Type::DEFAULT_VALUE_EMPTY or Type::DEFAULT_VALUE_CURRENT_DATE",
+                                null,
+                                array(
+                                    "setting" => $name
+                                )
+                            );
+                        }
+                    }
+
+                    break;
+            }
+        }
+
+        return $validationErrors;
+    }
+
+    /**
+     * Returns whether the field type is searchable
+     *
+     * @return boolean
+     */
+    public function isSearchable()
+    {
+        return true;
     }
 }
