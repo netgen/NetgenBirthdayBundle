@@ -6,7 +6,6 @@ use eZ\Publish\Core\FieldType\Value as BaseValue;
 
 class Value extends BaseValue
 {
-
     public $year;
 
     public $month;
@@ -18,7 +17,7 @@ class Value extends BaseValue
 
     public function __construct( $date = null )
     {
-        if ( $date !== null && $date != '' )
+        if ( !empty( $date ) )
         {
             $this->date = $date;
 

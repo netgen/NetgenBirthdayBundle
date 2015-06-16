@@ -10,13 +10,19 @@ use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 class Birthday implements Converter
 {
     /**
-     * @return Birthday
+     * @return \Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday
      */
     public static function create()
     {
         return new self;
     }
 
+    /**
+     * Converts data from $value to $storageFieldValue
+     *
+     * @param \eZ\Publish\SPI\Persistence\Content\FieldValue $value
+     * @param \eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue $storageFieldValue
+     */
     public function toStorageValue( FieldValue $value, StorageFieldValue $storageFieldValue )
     {
         $storageFieldValue->dataText = $value->data;
@@ -64,7 +70,7 @@ class Birthday implements Converter
      *
      * If the indexing is not supported, this method must return false.
      *
-     * @return string
+     * @return string|false
      */
     public function getIndexColumn()
     {
