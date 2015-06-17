@@ -1,0 +1,7 @@
+{% block ezbirthday_field %}
+{% spaceless %}
+
+{{ field.value.date|date( 'd F Y' ) }}
+
+{% endspaceless %}
+{% endblock %}
