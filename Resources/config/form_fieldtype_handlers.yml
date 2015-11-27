@@ -1,0 +1,8 @@
+parameters:
+    netgen.ezforms.form.fieldtype_handler.ezbirthday.class: Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday
+
+services:
+    netgen.ezforms.form.fieldtype_handler.ezbirthday:
+        class: %netgen.ezforms.form.fieldtype_handler.ezbirthday.class%
+        tags:
+            - {name: netgen.ezforms.form.fieldtype_handler, alias: ezbirthday}
