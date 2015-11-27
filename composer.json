@@ -14,5 +14,8 @@
     "autoload": {
         "psr-0": { "Netgen\\Bundle\\BirthdayBundle": "" }
     },
+    "suggest": {
+        "netgen/ez-forms-bundle": "Allows use of Birthday field type with Symfony forms"
+    },
     "target-dir": "Netgen/Bundle/BirthdayBundle/"
 }
