@@ -3,7 +3,6 @@
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
-
 use eZ\Publish\Core\FieldType\FieldType;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
@@ -23,43 +22,42 @@ class Type extends FieldType
     const DEFAULT_VALUE_CURRENT_DATE = 1;
 
     /**
-     * List of settings available for this FieldType
+     * List of settings available for this FieldType.
      *
      * The key is the setting name, and the value is the default value for this setting
      *
      * @var array
      */
     protected $settingsSchema = array(
-        "defaultValue" => array(
-            "type" => "integer",
-            "default" => self::DEFAULT_VALUE_EMPTY
-        )
+        'defaultValue' => array(
+            'type' => 'integer',
+            'default' => self::DEFAULT_VALUE_EMPTY,
+        ),
     );
 
     /**
-     * Returns the field type identifier for this field type
+     * Returns the field type identifier for this field type.
      *
      * @return string
      */
     public function getFieldTypeIdentifier()
     {
-        return "ezbirthday";
+        return 'ezbirthday';
     }
 
     /**
-     * Returns a human readable string representation from the given $value
+     * Returns a human readable string representation from the given $value.
      *
      * It will be used to generate content name and url alias if current field
      * is designated to be used in the content name/urlAlias pattern.
      *
-     * The used $value can be assumed to be already accepted by {@link
-     * acceptValue()}.
+     * The used $value can be assumed to be already accepted by {@link * acceptValue()}.
      *
      * @param \eZ\Publish\SPI\FieldType\Value $value
      *
      * @return string
      */
-    public function getName( SPIValue $value )
+    public function getName(SPIValue $value)
     {
         return (string)$value;
     }
@@ -75,30 +73,29 @@ class Type extends FieldType
     }
 
     /**
-     * Converts an $hash to the Value defined by the field type
+     * Converts an $hash to the Value defined by the field type.
      *
      * @param mixed $hash
      *
      * @return \eZ\Publish\SPI\FieldType\Value
      */
-    public function fromHash( $hash )
+    public function fromHash($hash)
     {
-        if ( empty( $hash ) )
-        {
+        if (empty($hash)) {
             return $this->getEmptyValue();
         }
 
-        return new Value( $hash );
+        return new Value($hash);
     }
 
     /**
-     * Converts the given $value into a plain hash format
+     * Converts the given $value into a plain hash format.
      *
      * @param \eZ\Publish\SPI\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
      *
      * @return mixed
      */
-    public function toHash( SPIValue $value )
+    public function toHash(SPIValue $value)
     {
         return (string)$value;
     }
@@ -113,11 +110,10 @@ class Type extends FieldType
      *
      * @return mixed The potentially converted input value.
      */
-    protected function createValueFromInput( $inputValue )
+    protected function createValueFromInput($inputValue)
     {
-        if ( $inputValue instanceof DateTime || is_string( $inputValue ) )
-        {
-            return new Value( $inputValue );
+        if ($inputValue instanceof DateTime || is_string($inputValue)) {
+            return new Value($inputValue);
         }
 
         return $inputValue;
@@ -133,13 +129,10 @@ class Type extends FieldType
      * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException If the value does not match the expected structure.
      *
      * @param \eZ\Publish\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
-     *
-     * @return void
      */
-    protected function checkValueStructure( BaseValue $value )
+    protected function checkValueStructure(BaseValue $value)
     {
-        if ( !$value->date instanceof DateTime )
-        {
+        if (!$value->date instanceof DateTime) {
             throw new InvalidArgumentType(
                 '$value->date',
                 'DateTime',
@@ -164,63 +157,56 @@ class Type extends FieldType
      *
      * @return mixed
      */
-    protected function getSortInfo( BaseValue $value )
+    protected function getSortInfo(BaseValue $value)
     {
-        return $this->getName( $value );
+        return $this->getName($value);
     }
 
     /**
-     * Validates the fieldSettings of a FieldDefinitionCreateStruct or FieldDefinitionUpdateStruct
+     * Validates the fieldSettings of a FieldDefinitionCreateStruct or FieldDefinitionUpdateStruct.
      *
      * @param mixed $fieldSettings
      *
      * @return \eZ\Publish\SPI\FieldType\ValidationError[]
      */
-    public function validateFieldSettings( $fieldSettings )
+    public function validateFieldSettings($fieldSettings)
     {
         $validationErrors = array();
-        if ( !is_array( $fieldSettings ) )
-        {
-            $validationErrors[] = new ValidationError( "Field settings must be in form of an array" );
+        if (!is_array($fieldSettings)) {
+            $validationErrors[] = new ValidationError('Field settings must be in form of an array');
+
             return $validationErrors;
         }
 
-        foreach ( $fieldSettings as $name => $value )
-        {
-            if ( !isset( $this->settingsSchema[$name] ) )
-            {
+        foreach ($fieldSettings as $name => $value) {
+            if (!isset($this->settingsSchema[$name])) {
                 $validationErrors[] = new ValidationError(
                     "Setting '%setting%' is unknown",
                     null,
                     array(
-                        "setting" => $name
+                        'setting' => $name,
                     )
                 );
                 continue;
             }
 
-            switch ( $name )
-            {
-                case "defaultValue":
-                    if ( !is_integer( $value ) )
-                    {
+            switch ($name) {
+                case 'defaultValue':
+                    if (!is_integer($value)) {
                         $validationErrors[] = new ValidationError(
                             "Setting '%setting%' value must be of integer type",
                             null,
                             array(
-                                "setting" => $name
+                                'setting' => $name,
                             )
                         );
-                    }
-                    else
-                    {
-                        if ( $value !== self::DEFAULT_VALUE_EMPTY && $value !== self::DEFAULT_VALUE_CURRENT_DATE )
-                        {
+                    } else {
+                        if ($value !== self::DEFAULT_VALUE_EMPTY && $value !== self::DEFAULT_VALUE_CURRENT_DATE) {
                             $validationErrors[] = new ValidationError(
                                 "Setting '%setting%' value must be either Type::DEFAULT_VALUE_EMPTY or Type::DEFAULT_VALUE_CURRENT_DATE",
                                 null,
                                 array(
-                                    "setting" => $name
+                                    'setting' => $name,
                                 )
                             );
                         }
@@ -234,9 +220,9 @@ class Type extends FieldType
     }
 
     /**
-     * Returns whether the field type is searchable
+     * Returns whether the field type is searchable.
      *
-     * @return boolean
+     * @return bool
      */
     public function isSearchable()
     {

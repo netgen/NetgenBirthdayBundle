@@ -15,14 +15,14 @@ class NetgenBirthdayExtension extends Extension implements PrependExtensionInter
     /**
      * {@inheritdoc}
      */
-    public function load( array $configs, ContainerBuilder $container )
+    public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration( $configuration, $configs );
+        $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader( $container, new FileLocator( __DIR__ . '/../Resources/config' ) );
-        $loader->load( 'services.yml' );
-        $loader->load( 'form_fieldtype_handlers.yml' );
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.yml');
+        $loader->load('form_fieldtype_handlers.yml');
     }
 
     /**
@@ -30,11 +30,11 @@ class NetgenBirthdayExtension extends Extension implements PrependExtensionInter
      *
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function prepend( ContainerBuilder $container )
+    public function prepend(ContainerBuilder $container)
     {
         $configFile = __DIR__ . '/../Resources/config/ezpublish.yml';
-        $config = Yaml::parse( file_get_contents( $configFile ) );
-        $container->prependExtensionConfig( 'ezpublish', $config );
-        $container->addResource( new FileResource( $configFile ) );
+        $config = Yaml::parse(file_get_contents($configFile));
+        $container->prependExtensionConfig('ezpublish', $config);
+        $container->addResource(new FileResource($configFile));
     }
 }

@@ -11,8 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday as BirthdayValue;
 
 /**
- * Class Birthday
- * @package Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler
+ * Class Birthday.
  */
 class Birthday extends FieldTypeHandler
 {
@@ -24,36 +23,35 @@ class Birthday extends FieldTypeHandler
         FieldDefinition $fieldDefinition,
         $languageCode,
         Content $content = null
-    )
-    {
-        $options = $this->getDefaultFieldOptions( $fieldDefinition, $languageCode, $content );
+    ) {
+        $options = $this->getDefaultFieldOptions($fieldDefinition, $languageCode, $content);
 
         $options['input'] = 'datetime';
         $options['widget'] = 'choice';
         $options['constraints'][] = new Assert\Date();
 
-        $formBuilder->add( $fieldDefinition->identifier, "birthday", $options );
+        $formBuilder->add($fieldDefinition->identifier, 'birthday', $options);
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function convertFieldValueToForm( Value $value, FieldDefinition $fieldDefinition = null )
+    public function convertFieldValueToForm(Value $value, FieldDefinition $fieldDefinition = null)
     {
         return $value->date;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @return BirthdayValue\Value
      */
-    public function convertFieldValueFromForm( $data )
+    public function convertFieldValueFromForm($data)
     {
-        if ( empty($data) ) {
+        if (empty($data)) {
             $data = null;
         }
 
-        return new BirthdayValue\Value( $data );
+        return new BirthdayValue\Value($data);
     }
 }
