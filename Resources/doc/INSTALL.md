@@ -1,10 +1,10 @@
 Netgen Birthday Bundle installation instructions
-==========================================================
+================================================
 
 Requirements
 ------------
 
-* Recent version of eZ Publish 5
+* Recent version of eZ Publish 5 or eZ Platform
 
 Installation steps
 ------------------
@@ -19,19 +19,15 @@ $ composer require netgen/birthday-bundle:~1.0 netgen/birthday:~1.0
 
 ### Activate the bundle
 
-Activate the bundle in `ezpublish/EzPublishKernel.php` file.
+Activate the bundle in `app/AppKernel.php` file.
 
 ```php
-use Netgen\Bundle\BirthdayBundle\NetgenBirthdayBundle;
-
-...
-
 public function registerBundles()
 {
    $bundles = array(
-       new FrameworkBundle(),
+       new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
        ...
-       new NetgenBirthdayBundle()
+       new Netgen\Bundle\BirthdayBundle\NetgenBirthdayBundle()
    );
 
    ...
@@ -40,10 +36,10 @@ public function registerBundles()
 
 ### Clear the caches
 
-Clear eZ Publish 5 caches.
+Clear eZ Publish caches.
 
 ```bash
-php ezpublish/console cache:clear
+php app/console cache:clear
 ```
 
 ### Use the bundle
