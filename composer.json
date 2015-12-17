@@ -9,13 +9,14 @@
         }
     ],
     "require": {
-        "netgen/birthday": "~1.0"
+        "ezsystems/ezpublish-kernel": "*"
+    },
+    "suggest": {
+        "netgen/birthday": "To edit this field type in legacy administration interface",
+        "netgen/ez-forms-bundle": "Allows use of Birthday field type with Symfony forms"
     },
     "autoload": {
         "psr-0": { "Netgen\\Bundle\\BirthdayBundle": "" }
-    },
-    "suggest": {
-        "netgen/ez-forms-bundle": "Allows use of Birthday field type with Symfony forms"
     },
     "target-dir": "Netgen/Bundle/BirthdayBundle/"
 }
