@@ -5,17 +5,17 @@ parameters:
 
 services:
     ezpublish.fieldType.ezbirthday:
-        class: %ezpublish.fieldType.ezbirthday.class%
+        class: "%ezpublish.fieldType.ezbirthday.class%"
         parent: ezpublish.fieldType
         tags:
             - {name: ezpublish.fieldType, alias: ezbirthday}
 
     ezpublish.fieldType.ezbirthday.converter:
-        class: %ezpublish.fieldType.ezbirthday.converter.class%
+        class: "%ezpublish.fieldType.ezbirthday.converter.class%"
         tags:
             - {name: ezpublish.storageEngine.legacy.converter, alias: ezbirthday, lazy: true, callback: '::create'}
 
     ezpublish.fieldType.indexable.ezbirthday:
-        class: %ezpublish.fieldType.indexable.ezbirthday.class%
+        class: "%ezpublish.fieldType.indexable.ezbirthday.class%"
         tags:
             - {name: ezpublish.fieldType.indexable, alias: ezbirthday}

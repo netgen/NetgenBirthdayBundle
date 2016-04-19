@@ -3,6 +3,6 @@ parameters:
 
 services:
     netgen.ezforms.form.fieldtype_handler.ezbirthday:
-        class: %netgen.ezforms.form.fieldtype_handler.ezbirthday.class%
+        class: "%netgen.ezforms.form.fieldtype_handler.ezbirthday.class%"
         tags:
             - {name: netgen.ezforms.form.fieldtype_handler, alias: ezbirthday}
