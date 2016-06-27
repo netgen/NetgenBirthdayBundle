@@ -5,9 +5,8 @@ namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 use eZ\Publish\SPI\FieldType\FieldType;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
-use PHPUnit\Framework\TestCase;
 
-class TypeTest extends TestCase
+class TypeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var Type

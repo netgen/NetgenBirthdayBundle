@@ -6,10 +6,9 @@ use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday;
 use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormBuilder;
 
-class BirthdayTest extends TestCase
+class BirthdayTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var Birthday
