@@ -12,7 +12,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     /**
      * @var Type
      */
-    private $type;
+    protected $type;
 
     public function setUp()
     {

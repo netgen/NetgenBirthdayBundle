@@ -14,7 +14,7 @@ class BirthdayTest extends \PHPUnit_Framework_TestCase
     /**
      * @var Birthday
      */
-    private $converter;
+    protected $converter;
 
     public function setUp()
     {
