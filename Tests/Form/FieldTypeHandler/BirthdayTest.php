@@ -83,7 +83,7 @@ class BirthdayTest extends \PHPUnit_Framework_TestCase
                             'name' => 'Identifier1',
                         ),
                     ),
-                )
+                ),
             )
         );
 
