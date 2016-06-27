@@ -1,0 +1,27 @@
+<phpunit bootstrap="vendor/autoload.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Netgen\BirthdayBundle\Tests">
+            <directory>Tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>.</directory>
+            <exclude>
+                <directory>DependencyInjection</directory>
+                <directory>Resources</directory>
+                <directory>extension</directory>
+                <directory>Tests</directory>
+                <directory>vendor</directory>
+                <file>NetgenBirthdayBundle.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

@@ -1,6 +1,8 @@
 Netgen Birthday Bundle
 ================================
 
+[![Build Status](https://img.shields.io/travis/netgen/NetgenBirthdayBundle.svg?style=flat-square)](https://travis-ci.org/netgen/NetgenBirthdayBundle)
+
 Netgen Birthday Bundle is an eZ Publish bundle that provides an implementation of `ezbirthday` field type.
 
 However, The eZ Publish 4 `birthday` extension is still required to populate field type through the admin interface.
