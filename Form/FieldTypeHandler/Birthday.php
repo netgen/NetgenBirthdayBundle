@@ -28,9 +28,18 @@ class Birthday extends FieldTypeHandler
 
         $options['input'] = 'datetime';
         $options['widget'] = 'choice';
+        $options['years'] = $this->getYears();
         $options['constraints'][] = new Assert\Date();
 
         $formBuilder->add($fieldDefinition->identifier, 'birthday', $options);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getYears()
+    {
+        return range(date('Y'), date('Y') - 90);
     }
 
     /**
