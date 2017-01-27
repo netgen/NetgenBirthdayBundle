@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "*"
+        "ezsystems/ezpublish-kernel": "*",
+        "twig/extensions": "^1.4"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
