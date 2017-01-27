@@ -108,7 +108,7 @@ class Type extends FieldType
      *
      * @param mixed $inputValue
      *
-     * @return mixed The potentially converted input value.
+     * @return mixed The potentially converted input value
      */
     protected function createValueFromInput($inputValue)
     {
@@ -126,7 +126,7 @@ class Type extends FieldType
      * from validators, but only plausibility checks for the general data
      * format.
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException If the value does not match the expected structure.
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException If the value does not match the expected structure
      *
      * @param \eZ\Publish\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
      */
