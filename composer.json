@@ -1,6 +1,7 @@
 {
     "name": "netgen/birthday-bundle",
     "description": "Netgen Birthday bundle for dates before 1970 in eZ Publish 5",
+    "type": "ezplatform-bundle",
     "license": "GPL-2.0",
     "authors": [
         {
