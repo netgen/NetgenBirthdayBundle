@@ -2,8 +2,8 @@
 
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
-use eZ\Publish\Core\FieldType\Value as BaseValue;
 use DateTime;
+use eZ\Publish\Core\FieldType\Value as BaseValue;
 
 class Value extends BaseValue
 {

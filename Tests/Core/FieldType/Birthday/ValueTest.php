@@ -2,8 +2,8 @@
 
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
-use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
+use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 
 class ValueTest extends \PHPUnit_Framework_TestCase
 {

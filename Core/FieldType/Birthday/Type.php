@@ -2,12 +2,12 @@
 
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
+use DateTime;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 use eZ\Publish\Core\FieldType\FieldType;
+use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
-use eZ\Publish\Core\FieldType\ValidationError;
-use DateTime;
 
 class Type extends FieldType
 {
@@ -59,7 +59,7 @@ class Type extends FieldType
      */
     public function getName(SPIValue $value)
     {
-        return (string)$value;
+        return (string) $value;
     }
 
     /**
@@ -97,69 +97,7 @@ class Type extends FieldType
      */
     public function toHash(SPIValue $value)
     {
-        return (string)$value;
-    }
-
-    /**
-     * Inspects given $inputValue and potentially converts it into a dedicated value object.
-     *
-     * If given $inputValue could not be converted or is already an instance of dedicate value object,
-     * the method should simply return it.
-     *
-     * @param mixed $inputValue
-     *
-     * @return mixed The potentially converted input value
-     */
-    protected function createValueFromInput($inputValue)
-    {
-        if ($inputValue instanceof DateTime || is_string($inputValue)) {
-            return new Value($inputValue);
-        }
-
-        return $inputValue;
-    }
-
-    /**
-     * Throws an exception if value structure is not of expected format.
-     *
-     * Note that this does not include validation after the rules
-     * from validators, but only plausibility checks for the general data
-     * format.
-     *
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException If the value does not match the expected structure
-     *
-     * @param \eZ\Publish\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
-     */
-    protected function checkValueStructure(BaseValue $value)
-    {
-        if (!$value->date instanceof DateTime) {
-            throw new InvalidArgumentType(
-                '$value->date',
-                'DateTime',
-                $value->date
-            );
-        }
-    }
-
-    /**
-     * Returns information for FieldValue->$sortKey relevant to the field type.
-     *
-     * Return value is mixed. It should be something which is sensible for
-     * sorting.
-     *
-     * It is up to the persistence implementation to handle those values.
-     * Common string and integer values are safe.
-     *
-     * For the legacy storage it is up to the field converters to set this
-     * value in either sort_key_string or sort_key_int.
-     *
-     * @param \eZ\Publish\Core\FieldType\Value $value
-     *
-     * @return mixed
-     */
-    protected function getSortInfo(BaseValue $value)
-    {
-        return $this->getName($value);
+        return (string) $value;
     }
 
     /**
@@ -192,7 +130,7 @@ class Type extends FieldType
 
             switch ($name) {
                 case 'defaultValue':
-                    if (!is_integer($value)) {
+                    if (!is_int($value)) {
                         $validationErrors[] = new ValidationError(
                             "Setting '%setting%' value must be of integer type",
                             null,
@@ -227,5 +165,68 @@ class Type extends FieldType
     public function isSearchable()
     {
         return true;
+    }
+
+    /**
+     * Inspects given $inputValue and potentially converts it into a dedicated value object.
+     *
+     * If given $inputValue could not be converted or is already an instance of dedicate value object,
+     * the method should simply return it.
+     *
+     * @param mixed $inputValue
+     *
+     * @return mixed The potentially converted input value
+     */
+    protected function createValueFromInput($inputValue)
+    {
+        if ($inputValue instanceof DateTime || is_string($inputValue)) {
+            return new Value($inputValue);
+        }
+
+        return $inputValue;
+    }
+
+    /**
+     * Throws an exception if value structure is not of expected format.
+     *
+     * Note that this does not include validation after the rules
+     * from validators, but only plausibility checks for the general data
+     * format.
+     *
+     *
+     * @param \eZ\Publish\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException If the value does not match the expected structure
+     */
+    protected function checkValueStructure(BaseValue $value)
+    {
+        if (!$value->date instanceof DateTime) {
+            throw new InvalidArgumentType(
+                '$value->date',
+                'DateTime',
+                $value->date
+            );
+        }
+    }
+
+    /**
+     * Returns information for FieldValue->$sortKey relevant to the field type.
+     *
+     * Return value is mixed. It should be something which is sensible for
+     * sorting.
+     *
+     * It is up to the persistence implementation to handle those values.
+     * Common string and integer values are safe.
+     *
+     * For the legacy storage it is up to the field converters to set this
+     * value in either sort_key_string or sort_key_int.
+     *
+     * @param \eZ\Publish\Core\FieldType\Value $value
+     *
+     * @return mixed
+     */
+    protected function getSortInfo(BaseValue $value)
+    {
+        return $this->getName($value);
     }
 }
