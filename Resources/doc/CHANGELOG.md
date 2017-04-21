@@ -1,6 +1,20 @@
 Netgen Birthday Bundle changelog
 ================================
 
+1.2.1 (21.04.2017)
+------------------
+
+* Compatibility with Symfony 3
+
+1.2 (21.04.2017)
+----------------
+
+* Change the priority of default field templates
+* Use localizeddate twig function for displaying the date
+* Remove YML file deprecations
+* PHPUnit tests improvements
+* PHP CS Fixer 2.0
+
 1.1 (17.12.2015)
 ----------------
 
