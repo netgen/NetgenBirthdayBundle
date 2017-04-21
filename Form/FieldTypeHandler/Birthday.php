@@ -7,7 +7,9 @@ use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use eZ\Publish\SPI\FieldType\Value;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday as BirthdayValue;
 use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -52,6 +54,10 @@ class Birthday extends FieldTypeHandler
         $options['widget'] = 'choice';
         $options['constraints'][] = new Assert\Date();
 
-        $formBuilder->add($fieldDefinition->identifier, 'birthday', $options);
+        $formBuilder->add(
+            $fieldDefinition->identifier,
+            Kernel::VERSION_ID < 20800 ? 'birthday' : BirthdayType::class,
+            $options
+        );
     }
 }
