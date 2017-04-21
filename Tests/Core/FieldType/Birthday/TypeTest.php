@@ -45,14 +45,14 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     {
         $spiValue = new Value();
 
-        $this->assertEquals(strval($spiValue), $this->type->getName($spiValue));
+        $this->assertEquals((string) $spiValue, $this->type->getName($spiValue));
     }
 
     public function testToHash()
     {
         $spiValue = new Value();
 
-        $this->assertEquals(strval($spiValue), $this->type->toHash($spiValue));
+        $this->assertEquals((string) $spiValue, $this->type->toHash($spiValue));
     }
 
     public function testFromHash()

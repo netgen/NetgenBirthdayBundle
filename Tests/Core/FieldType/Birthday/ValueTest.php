@@ -18,7 +18,7 @@ class ValueTest extends \PHPUnit_Framework_TestCase
 
         $value = new Value($dt);
 
-        $this->assertEquals($dt->format('Y-m-d'), strval($value));
+        $this->assertEquals($dt->format('Y-m-d'), (string) $value);
     }
 
     public function testConstructWithString()
@@ -28,13 +28,13 @@ class ValueTest extends \PHPUnit_Framework_TestCase
 
         $value = new Value($str);
 
-        $this->assertEquals($dt->format('Y-m-d'), strval($value));
+        $this->assertEquals($dt->format('Y-m-d'), (string) $value);
     }
 
     public function testConstructWithNull()
     {
         $value = new Value(null);
 
-        $this->assertEquals('', strval($value));
+        $this->assertEquals('', (string) $value);
     }
 }
