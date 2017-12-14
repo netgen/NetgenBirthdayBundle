@@ -10,11 +10,11 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "*",
-        "twig/extensions": "^1.4"
+        "ezsystems/ezpublish-kernel": "^6.0|^7.0",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8|^5.7",
+        "phpunit/phpunit": "^5.7",
         "netgen/ez-forms-bundle": "*"
     },
     "suggest": {
@@ -22,6 +22,13 @@
         "netgen/ez-forms-bundle": "Allows use of Birthday field type with Symfony forms"
     },
     "autoload": {
-        "psr-4": { "Netgen\\Bundle\\BirthdayBundle\\": "" }
+        "psr-4": {
+            "Netgen\\Bundle\\BirthdayBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.3.x-dev"
+        }
     }
 }
