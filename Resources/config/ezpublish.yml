@@ -1,6 +1,6 @@
 system:
     default:
         field_templates:
-            - {template: "NetgenBirthdayBundle::ezbirthday_content_field.html.twig", priority: 0}
+            - { template: "@NetgenBirthday/ezbirthday_content_field.html.twig", priority: 0 }
         fielddefinition_settings_templates:
-            - {template: "NetgenBirthdayBundle:platformui/content_type/view:ezbirthday.html.twig", priority: 0}
+            - { template: "@NetgenBirthday/field_definition/view/ezbirthday.html.twig", priority: 0 }
