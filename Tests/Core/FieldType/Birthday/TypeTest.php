@@ -6,8 +6,9 @@ use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\SPI\FieldType\FieldType;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
+use PHPUnit\Framework\TestCase;
 
-class TypeTest extends \PHPUnit_Framework_TestCase
+class TypeTest extends TestCase
 {
     /**
      * @var Type
@@ -153,7 +154,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \eZ\Publish\Core\Base\Exceptions\InvalidArgumentType
-     * @expectedExceptionMessage Argument '$value->date' is invalid: expected value to be of type 'DateTime', got 'string'
+     * @expectedExceptionMessage Argument '%argumentName%' is invalid: expected value to be of type 'DateTime', got 'string'
      */
     public function testAcceptValueWithInvalidValue()
     {

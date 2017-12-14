@@ -8,8 +8,9 @@ use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday;
+use PHPUnit\Framework\TestCase;
 
-class BirthdayTest extends \PHPUnit_Framework_TestCase
+class BirthdayTest extends TestCase
 {
     /**
      * @var Birthday

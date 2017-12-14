@@ -4,8 +4,9 @@ namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
+use PHPUnit\Framework\TestCase;
 
-class ValueTest extends \PHPUnit_Framework_TestCase
+class ValueTest extends TestCase
 {
     public function testInstanceOfValue()
     {
