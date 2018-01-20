@@ -18,6 +18,6 @@ License and installation instructions
 
 * [License](LICENSE)
 
-* [Installation instructions](Resources/doc/INSTALL.md)
+* [Installation instructions](bundle/Resources/doc/INSTALL.md)
 
-* [Changelog](Resources/doc/CHANGELOG.md)
+* [Changelog](bundle/Resources/doc/CHANGELOG.md)

@@ -2,6 +2,13 @@
     "name": "netgen/birthday-bundle",
     "description": "Netgen Birthday bundle for dates before 1970 in eZ Publish 5",
     "type": "ezplatform-bundle",
+    "keywords": [
+        "ezpublish",
+        "ezplatform",
+        "birthday-bundle",
+        "netgen"
+    ],
+    "homepage": "https://github.com/netgen/NetgenBirthdayBundle",
     "license": "GPL-2.0",
     "authors": [
         {
@@ -23,8 +30,16 @@
     },
     "autoload": {
         "psr-4": {
-            "Netgen\\Bundle\\BirthdayBundle\\": ""
+            "Netgen\\Bundle\\BirthdayBundle\\": "bundle"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Netgen\\Bundle\\BirthdayBundle\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit --colors=always"
     },
     "extra": {
         "branch-alias": {
