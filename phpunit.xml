@@ -8,19 +8,17 @@
 >
     <testsuites>
         <testsuite name="Netgen\BirthdayBundle\Tests">
-            <directory>Tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist>
-            <directory>.</directory>
+            <directory suffix=".php">bundle</directory>
             <exclude>
-                <directory>DependencyInjection</directory>
-                <directory>Resources</directory>
-                <directory>extension</directory>
-                <directory>Tests</directory>
-                <directory>vendor</directory>
-                <file>NetgenBirthdayBundle.php</file>
+                <directory>bundle/DependencyInjection</directory>
+                <directory>bundle/Resources</directory>
+                <directory>bundle/extension</directory>
+                <file>bundle/NetgenBirthdayBundle.php</file>
             </exclude>
         </whitelist>
     </filter>
