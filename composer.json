@@ -9,7 +9,7 @@
         "netgen"
     ],
     "homepage": "https://github.com/netgen/NetgenBirthdayBundle",
-    "license": "GPL-2.0",
+    "license": "GPL-2.0-only",
     "authors": [
         {
             "name": "Netgen",
