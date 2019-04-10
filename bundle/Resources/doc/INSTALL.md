@@ -14,7 +14,7 @@ Installation steps
 Run the following command from your project root to install the bundle:
 
 ```bash
-$ composer require netgen/birthday-bundle:~1.0 netgen/birthday:~1.0
+$ composer require netgen/birthday-bundle:~1.0
 ```
 
 ### Activate the bundle
