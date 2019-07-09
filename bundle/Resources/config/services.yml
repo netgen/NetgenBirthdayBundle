@@ -8,12 +8,10 @@ services:
 
     netgen_birthday.field_type.legacy.converter:
         class: Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday
-        public: false
         tags:
             - { name: ezplatform.field_type.legacy_storage.converter, alias: ezbirthday }
 
     netgen_birthday.field_type.indexable:
         class: eZ\Publish\Core\FieldType\Unindexed
-        public: false
         tags:
             - { name: ezplatform.field_type.indexable, alias: ezbirthday }
