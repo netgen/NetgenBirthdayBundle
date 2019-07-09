@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
+use DateTimeImmutable;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
@@ -17,60 +20,60 @@ class TypeTest extends TestCase
      */
     protected $type;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->type = new Type();
     }
 
     public function testInstanceOfFieldType()
     {
-        $this->assertInstanceOf(FieldType::class, $this->type);
+        self::assertInstanceOf(FieldType::class, $this->type);
     }
 
     public function testIsSearchable()
     {
-        $this->assertTrue($this->type->isSearchable());
+        self::assertTrue($this->type->isSearchable());
     }
 
     public function testGetFieldTypeIdentifier()
     {
-        $this->assertEquals('ezbirthday', $this->type->getFieldTypeIdentifier());
+        self::assertSame('ezbirthday', $this->type->getFieldTypeIdentifier());
     }
 
     public function testGetEmptyValue()
     {
         $value = new Value();
 
-        $this->assertEquals($value, $this->type->getEmptyValue());
+        self::assertSame($value, $this->type->getEmptyValue());
     }
 
     public function testGetName()
     {
         $spiValue = new Value();
 
-        $this->assertEquals((string) $spiValue, $this->type->getName($spiValue, new FieldDefinition(), 'eng-GB'));
+        self::assertSame((string) $spiValue, $this->type->getName($spiValue, new FieldDefinition(), 'eng-GB'));
     }
 
     public function testToHash()
     {
         $spiValue = new Value();
 
-        $this->assertEquals((string) $spiValue, $this->type->toHash($spiValue));
+        self::assertSame((string) $spiValue, $this->type->toHash($spiValue));
     }
 
     public function testFromHash()
     {
-        $dt = new \DateTime();
+        $dt = new DateTimeImmutable();
         $spiValue = new Value($dt);
 
-        $this->assertEquals($spiValue, $this->type->fromHash($dt));
+        self::assertSame($spiValue, $this->type->fromHash($dt));
     }
 
     public function testFromHashWithEmptyHash()
     {
         $spiValue = new Value();
 
-        $this->assertEquals($spiValue, $this->type->fromHash(''));
+        self::assertSame($spiValue, $this->type->fromHash(''));
     }
 
     public function testValidateFieldSettingWithFieldSettingAsString()
@@ -79,76 +82,76 @@ class TypeTest extends TestCase
 
         $errors = $this->type->validateFieldSettings('test');
 
-        $this->assertEquals($validationError, $errors[0]);
+        self::assertSame($validationError, $errors[0]);
     }
 
     public function testValidateFieldSettingsWithUnknownSetting()
     {
-        $fieldSettings = array(
-            'test' => array(),
-        );
+        $fieldSettings = [
+            'test' => [],
+        ];
 
         $validationError = new ValidationError(
             "Setting '%setting%' is unknown",
             null,
-            array(
+            [
                 'setting' => 'test',
-            )
+            ]
         );
 
         $errors = $this->type->validateFieldSettings($fieldSettings);
 
-        $this->assertEquals($validationError, $errors[0]);
+        self::assertSame($validationError, $errors[0]);
     }
 
     public function testValidateFieldSettingsWithInvalidDefaultValue()
     {
-        $fieldSettings = array(
+        $fieldSettings = [
             'defaultValue' => false,
-        );
+        ];
 
         $validationError = new ValidationError(
             "Setting '%setting%' value must be of integer type",
             null,
-            array(
+            [
                 'setting' => 'defaultValue',
-            )
+            ]
         );
 
         $errors = $this->type->validateFieldSettings($fieldSettings);
 
-        $this->assertEquals($validationError, $errors[0]);
+        self::assertSame($validationError, $errors[0]);
     }
 
     public function testValidateFieldSettings()
     {
-        $fieldSettings = array(
+        $fieldSettings = [
             'defaultValue' => 5,
-        );
+        ];
 
         $validationError = new ValidationError(
             "Setting '%setting%' value must be either Type::DEFAULT_VALUE_EMPTY or Type::DEFAULT_VALUE_CURRENT_DATE",
             null,
-            array(
+            [
                 'setting' => 'defaultValue',
-            )
+            ]
         );
 
         $errors = $this->type->validateFieldSettings($fieldSettings);
 
-        $this->assertEquals($validationError, $errors[0]);
+        self::assertSame($validationError, $errors[0]);
     }
 
     public function testAcceptValueWithDateTimeAsInput()
     {
-        $dt = new \DateTime();
+        $dt = new DateTimeImmutable();
 
         $this->type->acceptValue($dt);
     }
 
     public function testAcceptValueWithValue()
     {
-        $dt = new \DateTime();
+        $dt = new DateTimeImmutable();
         $value = new Value($dt);
 
         $this->type->acceptValue($value);
@@ -167,7 +170,7 @@ class TypeTest extends TestCase
 
     public function testToPersistenceValue()
     {
-        $value = new Value(new \DateTime());
+        $value = new Value(new DateTimeImmutable());
 
         $this->type->toPersistenceValue($value);
     }

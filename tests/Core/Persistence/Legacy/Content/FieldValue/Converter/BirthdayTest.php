@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\Persistence\Legacy\Content\FieldValue\Converter;
 
 use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter;
@@ -17,28 +19,28 @@ class BirthdayTest extends TestCase
      */
     protected $converter;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->converter = new Birthday();
     }
 
     public function testInstanceOfConverter()
     {
-        $this->assertInstanceOf(Converter::class, $this->converter);
+        self::assertInstanceOf(Converter::class, $this->converter);
     }
 
     public function testGetIndexColumn()
     {
-        $this->assertEquals('sort_key_string', $this->converter->getIndexColumn());
+        self::assertSame('sort_key_string', $this->converter->getIndexColumn());
     }
 
     public function testToStorageValue()
     {
         $fieldValue = new FieldValue(
-            array(
+            [
                 'data' => 'data',
                 'sortKey' => 'sortKey',
-            )
+            ]
         );
         $storageFieldValue = new StorageFieldValue();
 
@@ -48,10 +50,10 @@ class BirthdayTest extends TestCase
     public function testToFieldValue()
     {
         $storageFieldValue = new StorageFieldValue(
-            array(
+            [
                 'dataText' => 'data',
                 'sortKeyString' => 'sortKey',
-            )
+            ]
         );
         $fieldValue = new FieldValue();
 
@@ -61,7 +63,7 @@ class BirthdayTest extends TestCase
     public function testToStorageFieldDefinition()
     {
         $fieldDefinition = new FieldDefinition();
-        $fieldDefinition->fieldTypeConstraints->fieldSettings = array('defaultValue' => 'some_value');
+        $fieldDefinition->fieldTypeConstraints->fieldSettings = ['defaultValue' => 'some_value'];
         $storageFieldDefinition = new StorageFieldDefinition();
 
         $this->converter->toStorageFieldDefinition($fieldDefinition, $storageFieldDefinition);

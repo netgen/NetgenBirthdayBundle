@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
-use DateTime;
+use DateTimeInterface;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 use eZ\Publish\Core\FieldType\FieldType;
@@ -15,12 +17,12 @@ class Type extends FieldType
     /**
      * @const int
      */
-    const DEFAULT_VALUE_EMPTY = 0;
+    public const DEFAULT_VALUE_EMPTY = 0;
 
     /**
      * @const int
      */
-    const DEFAULT_VALUE_CURRENT_DATE = 1;
+    public const DEFAULT_VALUE_CURRENT_DATE = 1;
 
     /**
      * List of settings available for this FieldType.
@@ -29,12 +31,12 @@ class Type extends FieldType
      *
      * @var array
      */
-    protected $settingsSchema = array(
-        'defaultValue' => array(
+    protected $settingsSchema = [
+        'defaultValue' => [
             'type' => 'integer',
             'default' => self::DEFAULT_VALUE_EMPTY,
-        ),
-    );
+        ],
+    ];
 
     /**
      * Returns the field type identifier for this field type.
@@ -106,7 +108,7 @@ class Type extends FieldType
      */
     public function validateFieldSettings($fieldSettings)
     {
-        $validationErrors = array();
+        $validationErrors = [];
         if (!is_array($fieldSettings)) {
             $validationErrors[] = new ValidationError('Field settings must be in form of an array');
 
@@ -118,10 +120,11 @@ class Type extends FieldType
                 $validationErrors[] = new ValidationError(
                     "Setting '%setting%' is unknown",
                     null,
-                    array(
+                    [
                         'setting' => $name,
-                    )
+                    ]
                 );
+
                 continue;
             }
 
@@ -131,18 +134,18 @@ class Type extends FieldType
                         $validationErrors[] = new ValidationError(
                             "Setting '%setting%' value must be of integer type",
                             null,
-                            array(
+                            [
                                 'setting' => $name,
-                            )
+                            ]
                         );
                     } else {
                         if ($value !== self::DEFAULT_VALUE_EMPTY && $value !== self::DEFAULT_VALUE_CURRENT_DATE) {
                             $validationErrors[] = new ValidationError(
                                 "Setting '%setting%' value must be either Type::DEFAULT_VALUE_EMPTY or Type::DEFAULT_VALUE_CURRENT_DATE",
                                 null,
-                                array(
+                                [
                                     'setting' => $name,
-                                )
+                                ]
                             );
                         }
                     }
@@ -176,7 +179,7 @@ class Type extends FieldType
      */
     protected function createValueFromInput($inputValue)
     {
-        if ($inputValue instanceof DateTime || is_string($inputValue)) {
+        if ($inputValue instanceof DateTimeInterface || is_string($inputValue)) {
             return new Value($inputValue);
         }
 
@@ -190,14 +193,13 @@ class Type extends FieldType
      * from validators, but only plausibility checks for the general data
      * format.
      *
-     *
      * @param \eZ\Publish\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
      *
      * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException If the value does not match the expected structure
      */
     protected function checkValueStructure(BaseValue $value)
     {
-        if (!$value->date instanceof DateTime) {
+        if (!$value->date instanceof DateTimeInterface) {
             throw new InvalidArgumentType(
                 '$value->date',
                 'DateTime',

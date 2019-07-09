@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter;
 
 use eZ\Publish\Core\FieldType\FieldSettings;
@@ -55,9 +57,9 @@ class Birthday implements Converter
     public function toFieldDefinition(StorageFieldDefinition $storageDef, FieldDefinition $fieldDef)
     {
         $fieldDef->fieldTypeConstraints->fieldSettings = new FieldSettings(
-            array(
+            [
                 'defaultValue' => (int) $storageDef->dataText1,
-            )
+            ]
         );
     }
 
