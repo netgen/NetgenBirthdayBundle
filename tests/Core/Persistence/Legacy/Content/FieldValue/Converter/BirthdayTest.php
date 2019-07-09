@@ -32,11 +32,6 @@ class BirthdayTest extends TestCase
         $this->assertEquals('sort_key_string', $this->converter->getIndexColumn());
     }
 
-    public function testCreate()
-    {
-        $this->assertEquals($this->converter, Birthday::create());
-    }
-
     public function testToStorageValue()
     {
         $fieldValue = new FieldValue(

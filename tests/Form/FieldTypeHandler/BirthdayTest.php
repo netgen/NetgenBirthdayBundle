@@ -7,7 +7,7 @@ use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday;
 use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class BirthdayTest extends TestCase
 {
@@ -58,7 +58,7 @@ class BirthdayTest extends TestCase
 
     public function testBuildForm()
     {
-        $formBuilder = $this->getMockBuilder(FormBuilder::class)
+        $formBuilder = $this->getMockBuilder(FormBuilderInterface::class)
             ->disableOriginalConstructor()
             ->setMethods(array('add'))
             ->getMock();

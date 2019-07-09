@@ -224,6 +224,6 @@ class Type extends FieldType
      */
     protected function getSortInfo(BaseValue $value)
     {
-        return $this->getName($value);
+        return (string) $value;
     }
 }
