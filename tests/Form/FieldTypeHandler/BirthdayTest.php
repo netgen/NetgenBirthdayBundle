@@ -32,12 +32,11 @@ class BirthdayTest extends TestCase
     public function testConvertFieldValueToForm()
     {
         $dt = new DateTimeImmutable();
-        $value = new Value($dt);
-        $dt->setTime(0, 0);
+        $value = new Value($dt->setTime(0, 0));
 
         $returnedValue = $this->handler->convertFieldValueToForm($value);
 
-        self::assertSame((string) $dt, (string) $returnedValue);
+        self::assertSame($value->date->format('Y-m-d'), $returnedValue->format('Y-m-d'));
     }
 
     public function testConvertFieldValueFromForm()
