@@ -33,11 +33,11 @@ class BirthdayTest extends TestCase
     {
         $dt = new DateTimeImmutable();
         $value = new Value($dt);
-        $dt->setTime(0, 0, 0);
+        $dt->setTime(0, 0);
 
         $returnedValue = $this->handler->convertFieldValueToForm($value);
 
-        self::assertSame($dt, $returnedValue);
+        self::assertSame((string) $dt, (string) $returnedValue);
     }
 
     public function testConvertFieldValueFromForm()
@@ -47,7 +47,7 @@ class BirthdayTest extends TestCase
 
         $returnedValue = $this->handler->convertFieldValueFromForm($dt);
 
-        self::assertSame($value, $returnedValue);
+        self::assertSame((string) $value, (string) $returnedValue);
     }
 
     public function testConvertFieldValueFromFormWithDataNull()
@@ -56,7 +56,7 @@ class BirthdayTest extends TestCase
 
         $returnedValue = $this->handler->convertFieldValueFromForm(null);
 
-        self::assertSame($value, $returnedValue);
+        self::assertSame((string) $value, (string) $returnedValue);
     }
 
     public function testBuildForm()

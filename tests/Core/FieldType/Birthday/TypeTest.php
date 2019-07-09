@@ -44,7 +44,7 @@ class TypeTest extends TestCase
     {
         $value = new Value();
 
-        self::assertSame($value, $this->type->getEmptyValue());
+        self::assertSame($value->date, $this->type->getEmptyValue()->date);
     }
 
     public function testGetName()
@@ -66,14 +66,14 @@ class TypeTest extends TestCase
         $dt = new DateTimeImmutable();
         $spiValue = new Value($dt);
 
-        self::assertSame($spiValue, $this->type->fromHash($dt));
+        self::assertSame((string) $spiValue, (string) $this->type->fromHash($dt));
     }
 
     public function testFromHashWithEmptyHash()
     {
         $spiValue = new Value();
 
-        self::assertSame($spiValue, $this->type->fromHash(''));
+        self::assertSame((string) $spiValue, (string) $this->type->fromHash(''));
     }
 
     public function testValidateFieldSettingWithFieldSettingAsString()
@@ -82,7 +82,8 @@ class TypeTest extends TestCase
 
         $errors = $this->type->validateFieldSettings('test');
 
-        self::assertSame($validationError, $errors[0]);
+        self::assertSame($validationError->getTarget(), $errors[0]->getTarget());
+        self::assertSame($validationError->getTranslatableMessage(), $errors[0]->getTranslatableMessage());
     }
 
     public function testValidateFieldSettingsWithUnknownSetting()
@@ -101,7 +102,8 @@ class TypeTest extends TestCase
 
         $errors = $this->type->validateFieldSettings($fieldSettings);
 
-        self::assertSame($validationError, $errors[0]);
+        self::assertSame($validationError->getTarget(), $errors[0]->getTarget());
+        self::assertSame($validationError->getTranslatableMessage(), $errors[0]->getTranslatableMessage());
     }
 
     public function testValidateFieldSettingsWithInvalidDefaultValue()
@@ -120,7 +122,8 @@ class TypeTest extends TestCase
 
         $errors = $this->type->validateFieldSettings($fieldSettings);
 
-        self::assertSame($validationError, $errors[0]);
+        self::assertSame($validationError->getTarget(), $errors[0]->getTarget());
+        self::assertSame($validationError->getTranslatableMessage(), $errors[0]->getTranslatableMessage());
     }
 
     public function testValidateFieldSettings()
@@ -139,7 +142,8 @@ class TypeTest extends TestCase
 
         $errors = $this->type->validateFieldSettings($fieldSettings);
 
-        self::assertSame($validationError, $errors[0]);
+        self::assertSame($validationError->getTarget(), $errors[0]->getTarget());
+        self::assertSame($validationError->getTranslatableMessage(), $errors[0]->getTranslatableMessage());
     }
 
     public function testAcceptValueWithDateTimeAsInput()
