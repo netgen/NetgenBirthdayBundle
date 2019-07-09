@@ -2,6 +2,7 @@
 
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
+use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
 use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
 use eZ\Publish\SPI\FieldType\FieldType;
@@ -153,12 +154,11 @@ class TypeTest extends TestCase
         $this->type->acceptValue($value);
     }
 
-    /**
-     * @expectedException \eZ\Publish\Core\Base\Exceptions\InvalidArgumentType
-     * @expectedExceptionMessage Argument '$value->date' is invalid: expected value to be of type 'DateTime', got 'string'
-     */
     public function testAcceptValueWithInvalidValue()
     {
+        $this->expectException(InvalidArgumentType::class);
+        $this->expectExceptionMessage("Argument '\$value->date' is invalid: expected value to be of type 'DateTime', got 'string'");
+
         $value = new Value();
         $value->date = 'test';
 
