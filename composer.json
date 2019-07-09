@@ -1,6 +1,6 @@
 {
     "name": "netgen/birthday-bundle",
-    "description": "Netgen Birthday bundle for dates before 1970 in eZ Publish 5",
+    "description": "Netgen Birthday bundle for dates before 1970 in eZ Platform",
     "type": "ezplatform-bundle",
     "keywords": [
         "ezpublish",
@@ -13,7 +13,7 @@
     "authors": [
         {
             "name": "Netgen",
-            "homepage": "http://www.netgenlabs.com"
+            "homepage": "https://www.netgenlabs.com"
         }
     ],
     "require": {
@@ -24,8 +24,9 @@
         "phpunit/phpunit": "^8.2",
         "netgen/ez-forms-bundle": "*"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "suggest": {
-        "netgen/birthday": "To edit this field type in legacy administration interface",
         "netgen/ez-forms-bundle": "Allows use of Birthday field type with Symfony forms"
     },
     "autoload": {
