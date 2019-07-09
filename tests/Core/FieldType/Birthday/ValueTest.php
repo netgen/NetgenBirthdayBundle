@@ -11,12 +11,12 @@ use PHPUnit\Framework\TestCase;
 
 class ValueTest extends TestCase
 {
-    public function testInstanceOfValue()
+    public function testInstanceOfValue(): void
     {
         self::assertInstanceOf(BaseValue::class, new Value());
     }
 
-    public function testConstructWithDateTime()
+    public function testConstructWithDateTime(): void
     {
         $dt = new DateTimeImmutable();
 
@@ -25,7 +25,7 @@ class ValueTest extends TestCase
         self::assertSame($dt->format('Y-m-d'), (string) $value);
     }
 
-    public function testConstructWithString()
+    public function testConstructWithString(): void
     {
         $str = '2014-3-30';
         $dt = new DateTimeImmutable($str);
@@ -35,7 +35,7 @@ class ValueTest extends TestCase
         self::assertSame($dt->format('Y-m-d'), (string) $value);
     }
 
-    public function testConstructWithNull()
+    public function testConstructWithNull(): void
     {
         $value = new Value(null);
 

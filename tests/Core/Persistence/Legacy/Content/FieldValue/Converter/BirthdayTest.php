@@ -24,17 +24,17 @@ class BirthdayTest extends TestCase
         $this->converter = new Birthday();
     }
 
-    public function testInstanceOfConverter()
+    public function testInstanceOfConverter(): void
     {
         self::assertInstanceOf(Converter::class, $this->converter);
     }
 
-    public function testGetIndexColumn()
+    public function testGetIndexColumn(): void
     {
         self::assertSame('sort_key_string', $this->converter->getIndexColumn());
     }
 
-    public function testToStorageValue()
+    public function testToStorageValue(): void
     {
         $fieldValue = new FieldValue(
             [
@@ -47,7 +47,7 @@ class BirthdayTest extends TestCase
         $this->converter->toStorageValue($fieldValue, $storageFieldValue);
     }
 
-    public function testToFieldValue()
+    public function testToFieldValue(): void
     {
         $storageFieldValue = new StorageFieldValue(
             [
@@ -60,7 +60,7 @@ class BirthdayTest extends TestCase
         $this->converter->toFieldValue($storageFieldValue, $fieldValue);
     }
 
-    public function testToStorageFieldDefinition()
+    public function testToStorageFieldDefinition(): void
     {
         $fieldDefinition = new FieldDefinition();
         $fieldDefinition->fieldTypeConstraints->fieldSettings = ['defaultValue' => 'some_value'];
@@ -69,7 +69,7 @@ class BirthdayTest extends TestCase
         $this->converter->toStorageFieldDefinition($fieldDefinition, $storageFieldDefinition);
     }
 
-    public function testToFieldDefinition()
+    public function testToFieldDefinition(): void
     {
         $storageFieldDefinition = new StorageFieldDefinition();
         $storageFieldDefinition->dataText1 = 1;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler;
 
+use DateTimeInterface;
 use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use eZ\Publish\SPI\FieldType\Value;
@@ -14,25 +15,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * Class Birthday.
- */
 class Birthday extends FieldTypeHandler
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function convertFieldValueToForm(Value $value, ?FieldDefinition $fieldDefinition = null)
+    public function convertFieldValueToForm(Value $value, ?FieldDefinition $fieldDefinition = null): ?DateTimeInterface
     {
         return $value->date;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return BirthdayValue\Value
-     */
-    public function convertFieldValueFromForm($data)
+    public function convertFieldValueFromForm($data): Value
     {
         if (empty($data)) {
             $data = null;
@@ -41,15 +31,12 @@ class Birthday extends FieldTypeHandler
         return new BirthdayValue\Value($data);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function buildFieldForm(
         FormBuilderInterface $formBuilder,
         FieldDefinition $fieldDefinition,
         $languageCode,
         ?Content $content = null
-    ) {
+    ): void {
         $options = $this->getDefaultFieldOptions($fieldDefinition, $languageCode, $content);
 
         $options['input'] = 'datetime';

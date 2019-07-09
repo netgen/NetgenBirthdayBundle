@@ -36,12 +36,7 @@ class Value extends BaseValue
         }
     }
 
-    /**
-     * Returns a string representation of the field value.
-     *
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         if (!$this->date instanceof DateTimeInterface) {
             return '';

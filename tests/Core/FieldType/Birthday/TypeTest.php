@@ -25,43 +25,43 @@ class TypeTest extends TestCase
         $this->type = new Type();
     }
 
-    public function testInstanceOfFieldType()
+    public function testInstanceOfFieldType(): void
     {
         self::assertInstanceOf(FieldType::class, $this->type);
     }
 
-    public function testIsSearchable()
+    public function testIsSearchable(): void
     {
         self::assertTrue($this->type->isSearchable());
     }
 
-    public function testGetFieldTypeIdentifier()
+    public function testGetFieldTypeIdentifier(): void
     {
         self::assertSame('ezbirthday', $this->type->getFieldTypeIdentifier());
     }
 
-    public function testGetEmptyValue()
+    public function testGetEmptyValue(): void
     {
         $value = new Value();
 
         self::assertSame($value->date, $this->type->getEmptyValue()->date);
     }
 
-    public function testGetName()
+    public function testGetName(): void
     {
         $spiValue = new Value();
 
         self::assertSame((string) $spiValue, $this->type->getName($spiValue, new FieldDefinition(), 'eng-GB'));
     }
 
-    public function testToHash()
+    public function testToHash(): void
     {
         $spiValue = new Value();
 
         self::assertSame((string) $spiValue, $this->type->toHash($spiValue));
     }
 
-    public function testFromHash()
+    public function testFromHash(): void
     {
         $dt = new DateTimeImmutable();
         $spiValue = new Value($dt);
@@ -69,14 +69,14 @@ class TypeTest extends TestCase
         self::assertSame((string) $spiValue, (string) $this->type->fromHash($dt));
     }
 
-    public function testFromHashWithEmptyHash()
+    public function testFromHashWithEmptyHash(): void
     {
         $spiValue = new Value();
 
         self::assertSame((string) $spiValue, (string) $this->type->fromHash(''));
     }
 
-    public function testValidateFieldSettingWithFieldSettingAsString()
+    public function testValidateFieldSettingWithFieldSettingAsString(): void
     {
         $validationError = new ValidationError('Field settings must be in form of an array');
 
@@ -86,7 +86,7 @@ class TypeTest extends TestCase
         self::assertSame((string) $validationError->getTranslatableMessage(), (string) $errors[0]->getTranslatableMessage());
     }
 
-    public function testValidateFieldSettingsWithUnknownSetting()
+    public function testValidateFieldSettingsWithUnknownSetting(): void
     {
         $fieldSettings = [
             'test' => [],
@@ -106,7 +106,7 @@ class TypeTest extends TestCase
         self::assertSame((string) $validationError->getTranslatableMessage(), (string) $errors[0]->getTranslatableMessage());
     }
 
-    public function testValidateFieldSettingsWithInvalidDefaultValue()
+    public function testValidateFieldSettingsWithInvalidDefaultValue(): void
     {
         $fieldSettings = [
             'defaultValue' => false,
@@ -126,7 +126,7 @@ class TypeTest extends TestCase
         self::assertSame((string) $validationError->getTranslatableMessage(), (string) $errors[0]->getTranslatableMessage());
     }
 
-    public function testValidateFieldSettings()
+    public function testValidateFieldSettings(): void
     {
         $fieldSettings = [
             'defaultValue' => 5,
@@ -146,14 +146,14 @@ class TypeTest extends TestCase
         self::assertSame((string) $validationError->getTranslatableMessage(), (string) $errors[0]->getTranslatableMessage());
     }
 
-    public function testAcceptValueWithDateTimeAsInput()
+    public function testAcceptValueWithDateTimeAsInput(): void
     {
         $dt = new DateTimeImmutable();
 
         $this->type->acceptValue($dt);
     }
 
-    public function testAcceptValueWithValue()
+    public function testAcceptValueWithValue(): void
     {
         $dt = new DateTimeImmutable();
         $value = new Value($dt);
@@ -161,7 +161,7 @@ class TypeTest extends TestCase
         $this->type->acceptValue($value);
     }
 
-    public function testAcceptValueWithInvalidValue()
+    public function testAcceptValueWithInvalidValue(): void
     {
         $this->expectException(InvalidArgumentType::class);
         $this->expectExceptionMessage("Argument '\$value->date' is invalid: expected value to be of type 'DateTime', got 'string'");
@@ -172,7 +172,7 @@ class TypeTest extends TestCase
         $this->type->acceptValue($value);
     }
 
-    public function testToPersistenceValue()
+    public function testToPersistenceValue(): void
     {
         $value = new Value(new DateTimeImmutable());
 

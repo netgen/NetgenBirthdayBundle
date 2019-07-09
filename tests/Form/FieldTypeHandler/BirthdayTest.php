@@ -24,12 +24,12 @@ class BirthdayTest extends TestCase
         $this->handler = new Birthday();
     }
 
-    public function testInstanceOfFieldTypeHandler()
+    public function testInstanceOfFieldTypeHandler(): void
     {
         self::assertInstanceOf(FieldTypeHandler::class, $this->handler);
     }
 
-    public function testConvertFieldValueToForm()
+    public function testConvertFieldValueToForm(): void
     {
         $dt = new DateTimeImmutable();
         $value = new Value($dt->setTime(0, 0));
@@ -39,7 +39,7 @@ class BirthdayTest extends TestCase
         self::assertSame($value->date->format('Y-m-d'), $returnedValue->format('Y-m-d'));
     }
 
-    public function testConvertFieldValueFromForm()
+    public function testConvertFieldValueFromForm(): void
     {
         $dt = new DateTimeImmutable();
         $value = new Value($dt);
@@ -49,7 +49,7 @@ class BirthdayTest extends TestCase
         self::assertSame((string) $value, (string) $returnedValue);
     }
 
-    public function testConvertFieldValueFromFormWithDataNull()
+    public function testConvertFieldValueFromFormWithDataNull(): void
     {
         $value = new Value();
 
@@ -58,7 +58,7 @@ class BirthdayTest extends TestCase
         self::assertSame((string) $value, (string) $returnedValue);
     }
 
-    public function testBuildForm()
+    public function testBuildForm(): void
     {
         $formBuilder = $this->getMockBuilder(FormBuilderInterface::class)
             ->disableOriginalConstructor()
