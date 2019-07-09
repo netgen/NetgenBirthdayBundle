@@ -12,14 +12,6 @@ use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 class Birthday implements Converter
 {
     /**
-     * @return \Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday
-     */
-    public static function create()
-    {
-        return new self();
-    }
-
-    /**
      * Converts data from $value to $storageFieldValue.
      *
      * @param \eZ\Publish\SPI\Persistence\Content\FieldValue $value
