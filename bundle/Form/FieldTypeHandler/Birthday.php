@@ -22,7 +22,7 @@ class Birthday extends FieldTypeHandler
         return $value->date;
     }
 
-    public function convertFieldValueFromForm($data): Value
+    public function convertFieldValueFromForm($data): BirthdayValue\Value
     {
         if (empty($data)) {
             $data = null;
@@ -34,7 +34,7 @@ class Birthday extends FieldTypeHandler
     protected function buildFieldForm(
         FormBuilderInterface $formBuilder,
         FieldDefinition $fieldDefinition,
-        $languageCode,
+        string $languageCode,
         ?Content $content = null
     ): void {
         $options = $this->getDefaultFieldOptions($fieldDefinition, $languageCode, $content);
