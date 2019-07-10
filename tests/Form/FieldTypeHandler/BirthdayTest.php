@@ -62,7 +62,6 @@ class BirthdayTest extends TestCase
     {
         $formBuilder = $this->getMockBuilder(FormBuilderInterface::class)
             ->disableOriginalConstructor()
-            ->setMethods(['add'])
             ->getMock();
 
         $formBuilder->expects(self::once())
