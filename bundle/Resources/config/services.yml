@@ -1,7 +1,6 @@
 services:
     netgen_birthday.field_type:
         class: Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type
-        public: true
         parent: ezpublish.fieldType
         tags:
             - { name: ezplatform.field_type, alias: ezbirthday }
