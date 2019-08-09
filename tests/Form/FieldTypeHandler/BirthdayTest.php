@@ -12,12 +12,12 @@ use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class BirthdayTest extends TestCase
+final class BirthdayTest extends TestCase
 {
     /**
      * @var Birthday
      */
-    protected $handler;
+    private $handler;
 
     protected function setUp(): void
     {

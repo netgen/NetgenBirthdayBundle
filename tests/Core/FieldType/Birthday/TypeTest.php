@@ -13,12 +13,12 @@ use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use PHPUnit\Framework\TestCase;
 
-class TypeTest extends TestCase
+final class TypeTest extends TestCase
 {
     /**
      * @var Type
      */
-    protected $type;
+    private $type;
 
     protected function setUp(): void
     {

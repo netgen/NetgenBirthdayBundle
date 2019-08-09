@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 
-class Value extends BaseValue
+final class Value extends BaseValue
 {
     /**
      * @var \DateTimeImmutable
@@ -20,7 +20,7 @@ class Value extends BaseValue
      *
      * @var string
      */
-    protected $dateFormat = 'Y-m-d';
+    private $dateFormat = 'Y-m-d';
 
     /**
      * Construct a new Value object and initialize with $dateTime.

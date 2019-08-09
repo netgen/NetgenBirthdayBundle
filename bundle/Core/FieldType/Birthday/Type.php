@@ -12,7 +12,7 @@ use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\Core\FieldType\Value as BaseValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
 
-class Type extends FieldType
+final class Type extends FieldType
 {
     /**
      * @const int

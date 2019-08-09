@@ -12,12 +12,12 @@ use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday;
 use PHPUnit\Framework\TestCase;
 
-class BirthdayTest extends TestCase
+final class BirthdayTest extends TestCase
 {
     /**
      * @var Birthday
      */
-    protected $converter;
+    private $converter;
 
     protected function setUp(): void
     {

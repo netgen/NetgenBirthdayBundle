@@ -9,7 +9,7 @@ use eZ\Publish\Core\FieldType\Value as BaseValue;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use PHPUnit\Framework\TestCase;
 
-class ValueTest extends TestCase
+final class ValueTest extends TestCase
 {
     public function testInstanceOfValue(): void
     {
