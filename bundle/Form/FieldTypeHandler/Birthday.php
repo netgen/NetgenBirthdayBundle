@@ -12,7 +12,6 @@ use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday as BirthdayValue;
 use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class Birthday extends FieldTypeHandler
@@ -45,7 +44,7 @@ final class Birthday extends FieldTypeHandler
 
         $formBuilder->add(
             $fieldDefinition->identifier,
-            Kernel::VERSION_ID < 20800 ? 'birthday' : BirthdayType::class,
+            BirthdayType::class,
             $options
         );
     }
