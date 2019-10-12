@@ -4,7 +4,7 @@ Netgen Birthday Bundle installation instructions
 Requirements
 ------------
 
-* Recent version of eZ Publish 5 or eZ Platform
+* Recent version of eZ Platform
 
 Installation steps
 ------------------
@@ -36,10 +36,10 @@ public function registerBundles()
 
 ### Clear the caches
 
-Clear eZ Publish caches.
+Clear eZ Platform caches.
 
 ```bash
-php app/console cache:clear
+php bin/console cache:clear
 ```
 
 ### Use the bundle

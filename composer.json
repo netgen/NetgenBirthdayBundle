@@ -3,7 +3,6 @@
     "description": "Netgen Birthday bundle for dates before 1970 in eZ Platform",
     "type": "ezplatform-bundle",
     "keywords": [
-        "ezpublish",
         "ezplatform",
         "birthday-bundle",
         "netgen"
