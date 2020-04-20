@@ -164,7 +164,7 @@ final class TypeTest extends TestCase
     public function testAcceptValueWithInvalidValue(): void
     {
         $this->expectException(InvalidArgumentType::class);
-        $this->expectExceptionMessage("Argument '\$value->date' is invalid: expected value to be of type 'DateTime', got 'string'");
+        $this->expectExceptionMessage("Argument '\$value->date' is invalid: value must be of type 'DateTime', not 'string'");
 
         $value = new Value();
         $value->date = 'test';
