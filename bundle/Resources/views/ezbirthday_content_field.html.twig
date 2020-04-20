@@ -1,7 +1,7 @@
 {% block ezbirthday_field %}
 {% apply spaceless %}
 
-{{ field.value.date|localizeddate('long', 'none') }}
+{{ field.value.date|format_date('long') }}
 
 {% endapply %}
 {% endblock %}

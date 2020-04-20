@@ -103,27 +103,24 @@ final class Type extends FieldType
                 continue;
             }
 
-            switch ($name) {
-                case 'defaultValue':
-                    if (!is_int($value)) {
-                        $validationErrors[] = new ValidationError(
-                            "Setting '%setting%' value must be of integer type",
-                            null,
-                            [
-                                'setting' => $name,
-                            ]
-                        );
-                    } elseif ($value !== self::DEFAULT_VALUE_EMPTY && $value !== self::DEFAULT_VALUE_CURRENT_DATE) {
-                        $validationErrors[] = new ValidationError(
-                            "Setting '%setting%' value must be either Type::DEFAULT_VALUE_EMPTY or Type::DEFAULT_VALUE_CURRENT_DATE",
-                            null,
-                            [
-                                'setting' => $name,
-                            ]
-                        );
-                    }
-
-                    break;
+            if ($name === 'defaultValue') {
+                if (!is_int($value)) {
+                    $validationErrors[] = new ValidationError(
+                        "Setting '%setting%' value must be of integer type",
+                        null,
+                        [
+                            'setting' => $name,
+                        ]
+                    );
+                } elseif ($value !== self::DEFAULT_VALUE_EMPTY && $value !== self::DEFAULT_VALUE_CURRENT_DATE) {
+                    $validationErrors[] = new ValidationError(
+                        "Setting '%setting%' value must be either Type::DEFAULT_VALUE_EMPTY or Type::DEFAULT_VALUE_CURRENT_DATE",
+                        null,
+                        [
+                            'setting' => $name,
+                        ]
+                    );
+                }
             }
         }
 
