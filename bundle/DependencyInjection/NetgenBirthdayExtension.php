@@ -24,7 +24,7 @@ final class NetgenBirthdayExtension extends Extension implements PrependExtensio
     {
         $configFile = __DIR__ . '/../Resources/config/ezplatform.yaml';
         $config = Yaml::parse(file_get_contents($configFile));
-        $container->prependExtensionConfig('ezplatform', $config);
+        $container->prependExtensionConfig('ezpublish', $config);
         $container->addResource(new FileResource($configFile));
     }
 }
