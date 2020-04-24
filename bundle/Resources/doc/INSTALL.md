@@ -4,7 +4,7 @@ Netgen Birthday Bundle installation instructions
 Requirements
 ------------
 
-* Recent version of eZ Platform
+* eZ Platform 3+
 
 Installation steps
 ------------------
@@ -14,24 +14,23 @@ Installation steps
 Run the following command from your project root to install the bundle:
 
 ```bash
-$ composer require netgen/birthday-bundle:~1.0
+$ composer require netgen/birthday-bundle
 ```
 
 ### Activate the bundle
 
-Activate the bundle in `app/AppKernel.php` file.
+Activate the bundle in `config/bundles.php` file.
 
 ```php
-public function registerBundles()
-{
-   $bundles = array(
-       new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-       ...
-       new Netgen\Bundle\BirthdayBundle\NetgenBirthdayBundle()
-   );
+<?php
 
-   ...
-}
+return [
+    ...,
+
+    Netgen\Bundle\BirthdayBundle\NetgenBirthdayBundle::class => ['all' => true],
+
+    ...
+];
 ```
 
 ### Clear the caches
