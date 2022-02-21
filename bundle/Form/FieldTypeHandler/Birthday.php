@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler;
 
 use DateTimeInterface;
+use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
-use Ibexa\Contracts\Core\FieldType\Value;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday as BirthdayValue;
 use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;

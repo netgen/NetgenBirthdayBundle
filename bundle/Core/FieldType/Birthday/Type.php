@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use DateTimeInterface;
+use Ibexa\Contracts\Core\FieldType\Value as SPIValue;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 use Ibexa\Core\FieldType\FieldType;
 use Ibexa\Core\FieldType\ValidationError;
 use Ibexa\Core\FieldType\Value as BaseValue;
-use Ibexa\Contracts\Core\FieldType\Value as SPIValue;
 use function is_array;
 use function is_int;
 use function is_string;
