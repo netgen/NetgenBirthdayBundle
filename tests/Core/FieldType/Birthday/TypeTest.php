@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
 use DateTimeImmutable;
-use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
-use eZ\Publish\Core\FieldType\ValidationError;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
-use eZ\Publish\SPI\FieldType\FieldType;
+use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
+use Ibexa\Core\FieldType\ValidationError;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\FieldType\FieldType;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use PHPUnit\Framework\TestCase;

@@ -23,9 +23,9 @@ final class NetgenBirthdayExtension extends Extension implements PrependExtensio
 
     public function prepend(ContainerBuilder $container): void
     {
-        $configFile = __DIR__ . '/../Resources/config/ezplatform.yaml';
+        $configFile = __DIR__ . '/../Resources/config/ibexa.yaml';
         $config = Yaml::parse(file_get_contents($configFile));
-        $container->prependExtensionConfig('ezpublish', $config);
+        $container->prependExtensionConfig('ibexa', $config);
         $container->addResource(new FileResource($configFile));
     }
 }

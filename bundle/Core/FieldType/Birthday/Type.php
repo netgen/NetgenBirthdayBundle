@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use DateTimeInterface;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
-use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
-use eZ\Publish\Core\FieldType\FieldType;
-use eZ\Publish\Core\FieldType\ValidationError;
-use eZ\Publish\Core\FieldType\Value as BaseValue;
-use eZ\Publish\SPI\FieldType\Value as SPIValue;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
+use Ibexa\Core\FieldType\FieldType;
+use Ibexa\Core\FieldType\ValidationError;
+use Ibexa\Core\FieldType\Value as BaseValue;
+use Ibexa\Contracts\Core\FieldType\Value as SPIValue;
 use function is_array;
 use function is_int;
 use function is_string;
@@ -48,7 +48,7 @@ final class Type extends FieldType
     }
 
     /**
-     * @return \eZ\Publish\SPI\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value
+     * @return \Ibexa\Contracts\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value
      */
     public function getEmptyValue(): SPIValue
     {
@@ -58,7 +58,7 @@ final class Type extends FieldType
     /**
      * @param mixed $hash
      *
-     * @return \eZ\Publish\SPI\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value
+     * @return \Ibexa\Contracts\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value
      */
     public function fromHash($hash): SPIValue
     {
@@ -70,7 +70,7 @@ final class Type extends FieldType
     }
 
     /**
-     * @param \eZ\Publish\SPI\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
+     * @param \Ibexa\Contracts\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
      *
      * @return mixed
      */
@@ -82,7 +82,7 @@ final class Type extends FieldType
     /**
      * @param mixed $fieldSettings
      *
-     * @return \eZ\Publish\SPI\FieldType\ValidationError[]
+     * @return \Ibexa\Contracts\Core\FieldType\ValidationError[]
      */
     public function validateFieldSettings($fieldSettings): array
     {
@@ -145,7 +145,7 @@ final class Type extends FieldType
     }
 
     /**
-     * @param \eZ\Publish\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
+     * @param \Ibexa\Core\FieldType\Value|\Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value $value
      */
     protected function checkValueStructure(BaseValue $value): void
     {

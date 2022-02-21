@@ -6,7 +6,7 @@ namespace Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use eZ\Publish\Core\FieldType\Value as BaseValue;
+use Ibexa\Core\FieldType\Value as BaseValue;
 use function is_string;
 
 final class Value extends BaseValue

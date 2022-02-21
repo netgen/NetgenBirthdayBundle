@@ -1,19 +1,19 @@
 services:
     netgen_birthday.field_type:
         class: Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type
-        parent: ezpublish.fieldType
+        parent: Ibexa\Core\FieldType\FieldType
         tags:
-            - { name: ezplatform.field_type, alias: ezbirthday }
+            - { name: ibexa.field_type, alias: ezbirthday }
 
     netgen_birthday.field_type.legacy.converter:
         class: Netgen\Bundle\BirthdayBundle\Core\Persistence\Legacy\Content\FieldValue\Converter\Birthday
         tags:
-            - { name: ezplatform.field_type.legacy_storage.converter, alias: ezbirthday }
+            - { name: ibexa.field_type.storage.legacy.converter, alias: ezbirthday }
 
     netgen_birthday.field_type.indexable:
-        class: eZ\Publish\Core\FieldType\Unindexed
+        class: Ibexa\Core\FieldType\Unindexed
         tags:
-            - { name: ezplatform.field_type.indexable, alias: ezbirthday }
+            - { name: ibexa.field_type.indexable, alias: ezbirthday }
 
     netgen_birthday.field_type.form_handler:
         class: Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday

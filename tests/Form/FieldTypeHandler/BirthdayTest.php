@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Tests\Form\FieldTypeHandler;
 
 use DateTimeImmutable;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday;
 use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;

@@ -1,9 +1,9 @@
 {
     "name": "netgen/birthday-bundle",
-    "description": "Netgen Birthday bundle for dates before 1970 in eZ Platform",
-    "type": "ezplatform-bundle",
+    "description": "Netgen Birthday bundle for dates before 1970 in Ibexa Platform",
+    "type": "ibexa-bundle",
     "keywords": [
-        "ezplatform",
+        "ibexa",
         "birthday-bundle",
         "netgen"
     ],
@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezplatform-kernel": "^1.0",
+        "ibexa/core": "^4.0",
         "twig/intl-extra": "^3.0"
     },
     "require-dev": {
@@ -43,7 +43,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }

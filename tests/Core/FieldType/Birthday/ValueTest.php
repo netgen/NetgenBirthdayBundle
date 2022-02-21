@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
 use DateTimeImmutable;
-use eZ\Publish\Core\FieldType\Value as BaseValue;
+use Ibexa\Core\FieldType\Value as BaseValue;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use PHPUnit\Framework\TestCase;
 
