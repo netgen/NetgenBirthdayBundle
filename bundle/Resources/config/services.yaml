@@ -14,3 +14,8 @@ services:
         class: Ibexa\Core\FieldType\Unindexed
         tags:
             - { name: ibexa.field_type.indexable, alias: ezbirthday }
+
+    netgen_birthday.field_type.form_handler:
+        class: Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday
+        tags:
+            - { name: netgen.ezforms.form.fieldtype_handler, alias: ezbirthday }
