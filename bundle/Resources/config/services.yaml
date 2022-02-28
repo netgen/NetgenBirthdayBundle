@@ -18,4 +18,4 @@ services:
     netgen_birthday.field_type.form_handler:
         class: Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday
         tags:
-            - { name: netgen.ezforms.form.fieldtype_handler, alias: ezbirthday }
+            - { name: netgen.ibexa_forms.form.fieldtype_handler, alias: ezbirthday }

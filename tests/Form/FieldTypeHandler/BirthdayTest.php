@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday;
-use Netgen\Bundle\EzFormsBundle\Form\FieldTypeHandler;
+use Netgen\Bundle\IbexaFormsBundle\Form\FieldTypeHandler;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormBuilderInterface;
 
