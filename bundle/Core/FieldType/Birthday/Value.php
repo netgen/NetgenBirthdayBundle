@@ -11,17 +11,12 @@ use function is_string;
 
 final class Value extends BaseValue
 {
-    /**
-     * @var \DateTimeImmutable
-     */
-    public $date;
+    public ?DateTimeImmutable $date = null;
 
     /**
      * Date format to be used by {@link __toString()}.
-     *
-     * @var string
      */
-    private $dateFormat = 'Y-m-d';
+    private string $dateFormat = 'Y-m-d';
 
     /**
      * Construct a new Value object and initialize with $dateTime.

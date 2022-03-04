@@ -14,10 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 final class BirthdayTest extends TestCase
 {
-    /**
-     * @var Birthday
-     */
-    private $converter;
+    private Birthday $converter;
 
     protected function setUp(): void
     {

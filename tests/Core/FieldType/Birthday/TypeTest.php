@@ -15,10 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TypeTest extends TestCase
 {
-    /**
-     * @var Type
-     */
-    private $type;
+    private Type $type;
 
     protected function setUp(): void
     {

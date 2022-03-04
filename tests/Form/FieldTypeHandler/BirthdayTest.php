@@ -14,10 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class BirthdayTest extends TestCase
 {
-    /**
-     * @var Birthday
-     */
-    private $handler;
+    private Birthday $handler;
 
     protected function setUp(): void
     {

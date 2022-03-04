@@ -28,7 +28,7 @@ final class Type extends FieldType
     public const DEFAULT_VALUE_CURRENT_DATE = 1;
 
     /**
-     * @var array
+     * @var array<string, array<string, mixed>>
      */
     protected $settingsSchema = [
         'defaultValue' => [
