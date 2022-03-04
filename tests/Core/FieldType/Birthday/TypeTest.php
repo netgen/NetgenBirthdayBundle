@@ -158,16 +158,6 @@ final class TypeTest extends TestCase
         $this->type->acceptValue($value);
     }
 
-    public function testAcceptValueWithInvalidValue(): void
-    {
-        $this->expectException(InvalidArgumentType::class);
-        $this->expectExceptionMessage("Argument '\$value->date' is invalid: value must be of type 'DateTime', not 'string'");
-
-        $value = new Value();
-
-        $this->type->acceptValue($value);
-    }
-
     public function testToPersistenceValue(): void
     {
         $value = new Value(new DateTimeImmutable());
