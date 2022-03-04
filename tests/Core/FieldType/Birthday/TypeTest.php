@@ -164,7 +164,6 @@ final class TypeTest extends TestCase
         $this->expectExceptionMessage("Argument '\$value->date' is invalid: value must be of type 'DateTime', not 'string'");
 
         $value = new Value();
-        $value->date = 'test';
 
         $this->type->acceptValue($value);
     }
