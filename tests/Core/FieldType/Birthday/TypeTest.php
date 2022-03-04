@@ -6,7 +6,6 @@ namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
 use DateTimeImmutable;
 use Ibexa\Contracts\Core\FieldType\FieldType;
-use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 use Ibexa\Core\FieldType\ValidationError;
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type;
