@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 
 use DateTimeImmutable;
-use Ibexa\Contracts\Core\FieldType\FieldType;
 use Ibexa\Core\FieldType\ValidationError;
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Type;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Type::class)]
 final class TypeTest extends TestCase
 {
     private Type $type;
@@ -19,11 +20,6 @@ final class TypeTest extends TestCase
     protected function setUp(): void
     {
         $this->type = new Type();
-    }
-
-    public function testInstanceOfFieldType(): void
-    {
-        self::assertInstanceOf(FieldType::class, $this->type);
     }
 
     public function testIsSearchable(): void

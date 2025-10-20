@@ -7,8 +7,10 @@ namespace Netgen\Bundle\BirthdayBundle\Tests\Core\FieldType\Birthday;
 use DateTimeImmutable;
 use Ibexa\Core\FieldType\Value as BaseValue;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Value::class)]
 final class ValueTest extends TestCase
 {
     public function testInstanceOfValue(): void
