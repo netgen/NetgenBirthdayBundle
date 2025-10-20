@@ -12,8 +12,6 @@ use function is_string;
 
 final class Value extends BaseValue
 {
-    public ?DateTimeImmutable $date = null;
-
     /**
      * Date format to be used by {@link __toString()}.
      */
@@ -22,9 +20,9 @@ final class Value extends BaseValue
     /**
      * Construct a new Value object and initialize with $dateTime.
      *
-     * @param \DateTimeInterface|string|null $date Date as a DateTime object or string in Y-m-d format
+     * @param DateTimeImmutable|string|null $date Date as a DateTime object or string in Y-m-d format
      */
-    public function __construct($date = null)
+    public function __construct(public DateTimeImmutable|string|null $date = null)
     {
         if ($date instanceof DateTimeImmutable) {
             $this->date = $date->setTime(0, 0);
