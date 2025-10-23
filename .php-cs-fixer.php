@@ -14,6 +14,7 @@ return (new PhpCsFixer\Config())
         'native_function_invocation' => ['include' => ['@all']],
         'no_superfluous_phpdoc_tags' => false,
         'ordered_imports' => ['imports_order' => ['class', 'function', 'const']],
+        'ordered_types' => ['null_adjustment' => 'always_last'],
         'php_unit_internal_class' => false,
         'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
         'php_unit_test_class_requires_covers' => false,
