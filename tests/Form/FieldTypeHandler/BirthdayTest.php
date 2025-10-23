@@ -9,9 +9,11 @@ use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Netgen\Bundle\BirthdayBundle\Core\FieldType\Birthday\Value;
 use Netgen\Bundle\BirthdayBundle\Form\FieldTypeHandler\Birthday;
 use Netgen\Bundle\IbexaFormsBundle\Form\FieldTypeHandler;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormBuilderInterface;
 
+#[CoversClass(Birthday::class)]
 final class BirthdayTest extends TestCase
 {
     private Birthday $handler;
@@ -66,7 +68,7 @@ final class BirthdayTest extends TestCase
 
         $fieldDefinition = new FieldDefinition(
             [
-                'id' => 'id',
+                'id' => 123,
                 'identifier' => 'identifier',
                 'isRequired' => true,
                 'descriptions' => ['fre-FR' => 'fre-FR'],

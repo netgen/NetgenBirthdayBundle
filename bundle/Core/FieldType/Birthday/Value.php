@@ -22,9 +22,9 @@ final class Value extends BaseValue
     /**
      * Construct a new Value object and initialize with $dateTime.
      *
-     * @param \DateTimeInterface|string|null $date Date as a DateTime object or string in Y-m-d format
+     * @param DateTimeInterface|string|null $date Date as a DateTime object or string in Y-m-d format
      */
-    public function __construct($date = null)
+    public function __construct(DateTimeInterface|string|null $date = null)
     {
         if ($date instanceof DateTimeImmutable) {
             $this->date = $date->setTime(0, 0);

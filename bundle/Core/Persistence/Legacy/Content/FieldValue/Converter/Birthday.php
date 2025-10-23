@@ -39,7 +39,7 @@ final class Birthday implements Converter
         );
     }
 
-    public function getIndexColumn()
+    public function getIndexColumn(): string
     {
         return 'sort_key_string';
     }

@@ -1,26 +1,29 @@
-<phpunit bootstrap="vendor/autoload.php"
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.4/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
          backupGlobals="false"
-         backupStaticAttributes="false"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          colors="true"
          beStrictAboutTestsThatDoNotTestAnything="false"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         cacheDirectory=".phpunit.cache"
+         requireCoverageMetadata="true"
 >
     <testsuites>
         <testsuite name="Netgen\BirthdayBundle\Tests">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory suffix=".php">bundle</directory>
-            <exclude>
-                <directory>bundle/DependencyInjection</directory>
-                <directory>bundle/Resources</directory>
-                <directory>bundle/extension</directory>
-                <file>bundle/NetgenBirthdayBundle.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>bundle/DependencyInjection</directory>
+            <directory>bundle/Resources</directory>
+            <directory>bundle/extension</directory>
+            <file>bundle/NetgenBirthdayBundle.php</file>
+        </exclude>
+    </source>
 </phpunit>

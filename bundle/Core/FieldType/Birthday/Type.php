@@ -18,15 +18,9 @@ use function is_string;
 
 final class Type extends FieldType
 {
-    /**
-     * @const int
-     */
-    public const DEFAULT_VALUE_EMPTY = 0;
+    public const int DEFAULT_VALUE_EMPTY = 0;
 
-    /**
-     * @const int
-     */
-    public const DEFAULT_VALUE_CURRENT_DATE = 1;
+    public const int DEFAULT_VALUE_CURRENT_DATE = 1;
 
     /**
      * @var array<string, array<string, mixed>>
@@ -75,7 +69,7 @@ final class Type extends FieldType
      *
      * @return mixed
      */
-    public function toHash(SPIValue $value)
+    public function toHash(SPIValue $value): mixed
     {
         return (string) $value;
     }
@@ -159,7 +153,7 @@ final class Type extends FieldType
         }
     }
 
-    protected function getSortInfo(BaseValue $value)
+    protected function getSortInfo(BaseValue $value): string
     {
         return (string) $value;
     }
